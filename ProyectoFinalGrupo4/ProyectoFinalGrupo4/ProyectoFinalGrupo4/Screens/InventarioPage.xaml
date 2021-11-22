@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinalGrupo4.Screens.InventarioPage">
+
+    <ContentPage.Content>
+        <ScrollView VerticalOptions="Fill">
+            <StackLayout Padding="24">
+
+                <!--Buscador de Productos Inventario-->
+                <Label Text="Buscador del Inventario" HorizontalOptions="Center" FontAttributes="Bold" FontSize="22" Margin="0,15,0,10"></Label>
+                <SearchBar x:Name="srcBuscar" TextChanged="Filtrar" Placeholder="Ingrese el nombre del producto" Keyboard="Chat" TextColor="#4C4C4C" />
+
+                <!--Listado de Productos Inventario-->
+                <Label Text="Listado de Productos" HorizontalOptions="Center" FontAttributes="Bold" FontSize="22" Margin="0,20,0,20"></Label>
+                <Label Text="Nombre" FontAttributes="Bold" TextColor="Black" Margin="12,-1,0,0" />
+                <Label Text="Precio" FontAttributes="Bold" TextColor="Black" Margin="118,-25.5,0,0"/>
+                <Label Text="Unidades en Almacen" FontAttributes="Bold" TextColor="Black" Margin="195,-26,0,0"/>
+                <ListView x:Name="lstProductos" HeightRequest="5" HasUnevenRows="true">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Grid Padding="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="5" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0*"/>
+                                            <ColumnDefinition Width="0.7*"/>
+                                            <ColumnDefinition Width="0.5*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Row="1" Grid.Column="1" Text="{ Binding nombre }"  TextColor="Black"/>
+                                        <Label Grid.Row="1" Grid.Column="2" Text="{ Binding precio, StringFormat='L.{0}' }"  TextColor="Black"/>
+                                        <Label Grid.Row="1" Grid.Column="3" Text="{ Binding unidadesAlmacen }" HorizontalOptions="Center" TextColor="Black"/>
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

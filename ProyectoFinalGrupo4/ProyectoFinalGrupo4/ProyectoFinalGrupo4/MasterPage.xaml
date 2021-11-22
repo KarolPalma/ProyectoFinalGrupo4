@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinalGrupo4.MasterPage">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Prueba" BackgroundColor="White">
+            <StackLayout>
+                <Image Source="logoCompleto.png" WidthRequest="150" HeightRequest="150" Margin="0,10,0,10"/>
+                <Label FontSize="25"/>
+                <StackLayout Orientation="Vertical">
+                    <ListView x:Name="lstMenu">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell x:Name="ola">
+                                    <Label Text= "{Binding Titulo}"  FontSize="20" Padding="30,8,0,0"  TextColor="#4C4C4C"/>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+        </ContentPage>
+
+    </MasterDetailPage.Master>
+</MasterDetailPage>

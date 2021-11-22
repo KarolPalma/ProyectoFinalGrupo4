@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinalGrupo4.MainPage">
+
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label x:Name="usuario" Text="" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <Label x:Name="rol" Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
+        <Label x:Name="idSesionUsuario" Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
+        <Label FontSize="16" Padding="30,24,30,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Learn more at "/>
+                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Button Clicked="Button_Clicked" Text="Ir a Ventas"></Button>
+        <Button Clicked="Button_Clicked_1" Text="Actualizar"></Button>
+        <Button Clicked="Button_Clicked_2" Text="Desactivar"></Button>
+        <!--Listado -->
+        <ListView x:Name="lstAdministradores">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding usuario}" Detail="{Binding detalle}">
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

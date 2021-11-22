@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinalGrupo4.Screens.ProductoPage">
+    <ContentPage.Content>
+        <ScrollView VerticalOptions="Fill">
+            <StackLayout Padding="24">
+                
+                <!--Formulario de Creación y Modificación de Productos-->
+                <Label Text="Módulo Productos" HorizontalOptions="Center" FontAttributes="Bold" FontSize="22"></Label>
+                <Entry x:Name="txtIdProducto" IsVisible="false"/>
+                <Label Text="Nombre" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
+                <Entry Placeholder="Ingrese el nombre del producto" x:Name="txtNombre"/>
+                <Label Text="Descripción" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
+                <Entry Placeholder="Ingrese la descripción del producto" x:Name="txtDescripcion"/>
+                <Label Text="Categoría" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
+                <Picker x:Name="cmbCategoria" SelectedIndexChanged="cmbCategoria_SelectedIndexChanged" Margin="0,5,0,0" ItemDisplayBinding="{Binding categoria}" Title="Seleccione una Categoría"/>
+                <Label Text="Proveedor" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
+                <Picker x:Name="cmbProveedor" SelectedIndexChanged="cmbProveedor_SelectedIndexChanged" Margin="0,5,0,0" ItemDisplayBinding="{Binding nombre}" Title="Seleccione un Proveedor"/>
+                <Label Text="Cantidad Unidad" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
+                <Entry Placeholder="Ingrese una cantidad Unidad" x:Name="txtCantidadUnidad"/>
+                <Label Text="Unidades en Almacen" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
+                <Entry Placeholder="Ingrese las unidades en Almacen" x:Name="txtUnidadAlmacen" Keyboard="Numeric" MaxLength="8"/>
+                <Label Text="Cantidad Mínima" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
+                <Entry Placeholder="Ingrese la cantidad mínima" x:Name="txtCantidadMin" Keyboard="Numeric" MaxLength="8"/>
+                <Label Text="Cantidad Máxima" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
+                <Entry Placeholder="Ingrese la cantidad máxima" x:Name="txtCantidadMax" Keyboard="Numeric" MaxLength="8"/>
+                <Label Text="Foto" TextColor="#2196F3" FontSize="16" Margin="0,15,0,0"/>
+                <Button x:Name="btnSeleccionarFoto" Clicked="btnSeleccionarFoto_Clicked" Margin="85,-37,85,0" Text="Seleccionar Imagen" TextColor="White" BackgroundColor="#2196F3" CornerRadius="20"/>
+                <Image Source="{Binding fotoSource}" x:Name="imgProducto" HeightRequest="150" HorizontalOptions="Center" IsVisible="false"/>
+                <Label Text="Precio" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
+                <Entry Placeholder="Ingrese el precio del producto" x:Name="txtPrecio" Keyboard="Numeric" MaxLength="8"/>
+                <Label Text="Impuesto" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
+                <Picker x:Name="cmbImpuesto" SelectedIndexChanged="cmbImpuesto_SelectedIndexChanged" Margin="0,5,0,0" ItemDisplayBinding="{Binding nombreImpuesto}" Title="Seleccione un Impuesto"/>
+                <Button x:Name="btnGuardar" Clicked="btnGuardar_Clicked" Text="Guardar Producto" TextColor="White" BackgroundColor="#2196F3" CornerRadius="20" Margin="20"/>
+                <Button x:Name="btnDesactivar" Clicked="btnDesactivar_Clicked" Text="Desactivar Producto" TextColor="White" BackgroundColor="Color.Red" CornerRadius="20" Margin="20,-15,20,0" IsVisible="false"/>
+                
+                <!--Buscador de Productos-->
+                <Label Text="Buscador de Productos" HorizontalOptions="Center" FontAttributes="Bold" FontSize="22" Margin="0,15,0,10"></Label>
+                <SearchBar x:Name="srcBuscar" TextChanged="Filtrar" Placeholder="Ingrese el nombre del producto" Keyboard="Chat" TextColor="#4C4C4C" />
+
+                <!--Listado de Productos-->
+                <Label Text="Listado de Productos" HorizontalOptions="Center" FontAttributes="Bold" FontSize="22" Margin="0,20,0,10"></Label>
+                <ListView x:Name="lstProductos" HeightRequest="500" HasUnevenRows="true">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding nombre}" TextColor="Black" Detail="{Binding descripcion}">
+                                <TextCell.ContextActions>
+                                    <MenuItem Clicked="MenuItem_Clicked" CommandParameter="{Binding}" Text="Modificar"></MenuItem>
+                                </TextCell.ContextActions>
+                            </TextCell>
+                        </DataTemplate>
+                        <!--
+                            <ViewCell>
+                                <StackLayout Orientation="Vertical">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding nombre}" FontSize="16"
+                                           TextColor="#4C4C4C" Padding="30,10,0,0"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            <ViewCell.ContextActions>
+                                 <MenuItem Clicked="MenuItem_Clicked" CommandParameter="{Binding}" Text="Modificar"></MenuItem>
+                                </ViewCell.ContextActions>
+                            </ViewCell>
+                                -->
+
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

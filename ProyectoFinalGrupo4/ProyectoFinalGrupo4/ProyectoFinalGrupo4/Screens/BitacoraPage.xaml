@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinalGrupo4.Screens.BitacoraPage">
+    <ContentPage.Content>
+        <ScrollView VerticalOptions="Fill">
+            <StackLayout Padding="24">
+
+                <!--Buscador de Productos Inventario-->
+                <Label Text="Buscador de la Bitacora" HorizontalOptions="Center" FontAttributes="Bold" FontSize="22" Margin="0,15,0,10"></Label>
+                <SearchBar x:Name="srcBuscar" SearchButtonPressed="srcBuscar_SearchButtonPressed" Placeholder="Ingrese una fecha" Keyboard="Default" TextColor="#4C4C4C" />
+
+                <!--Listado de Productos Inventario-->
+                <Label Text="Listado de la Bitacora" HorizontalOptions="Center" FontAttributes="Bold" FontSize="22" Margin="0,20,0,20"></Label>
+                <ListView x:Name="lstBitacora" HasUnevenRows="true">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="15,0,0,0">
+                                    <Label Text="{Binding idRegistro, StringFormat='Id Registro: {0}'}" FontAttributes="Bold" TextColor="Black"></Label>
+                                    <Label Text="{Binding usuario}" TextColor="Black"></Label>
+                                    <Label Text="{Binding tipoDispositivo}" TextColor="Black"></Label>
+                                    <Label Text="{Binding sistemaOperativo}" TextColor="Black"></Label>
+                                    <Label Text="{Binding fecha, StringFormat='{0:d/MM/yyyy}'}" TextColor="Black"></Label>
+                                    <Label Text="{Binding hora}" TextColor="Black"></Label>
+                                    <Label Text="{Binding detalle}" TextColor="Black"></Label>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

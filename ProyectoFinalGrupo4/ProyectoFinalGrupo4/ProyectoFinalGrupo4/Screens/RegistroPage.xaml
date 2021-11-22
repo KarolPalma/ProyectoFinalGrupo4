@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinalGrupo4.Screens.RegistroPage">
+    <ContentPage.Content >
+        <ScrollView VerticalOptions="Fill">
+            <StackLayout Padding="24">
+                <!--Formulario de Registro-->
+                <Label Text="Registro" HorizontalOptions="Center" TextColor="#4C4C4C" FontAttributes="Bold" FontSize="22" Margin="0,40,0,0"></Label>
+                <Label Text="Usuario" TextColor="#2196F3" FontSize="16" Margin="0,20,0,0"/>
+                <Entry Placeholder="Ingrese el nombre de usuario" x:Name="txtUsuario"/>
+                <Label Text="Contraseña" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
+                <Entry Placeholder="Ingrese una contraseña" x:Name="txtClave" IsPassword="True"/>
+                <Label Text="Confirmación de contraseña" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
+                <Entry Placeholder="Confirme la contraseña" x:Name="txtConfirmacion" IsPassword="True"/>
+                <Button Text="Guardar Usuario" TextColor="White" BackgroundColor="#2196F3" CornerRadius="20" Margin="20" Clicked="Registro"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

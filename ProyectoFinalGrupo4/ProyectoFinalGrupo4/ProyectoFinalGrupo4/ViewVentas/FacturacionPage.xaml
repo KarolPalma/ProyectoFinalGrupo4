@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinalGrupo4.ViewVentas.FacturacionPage"
+             NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <Grid RowDefinitions="30, Auto, 350, *, 40" RowSpacing="20" Padding="30">
+            <Grid ColumnDefinitions="Auto, *, Auto" >
+                <ImageButton Source="back.png" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="Start"
+                             HeightRequest="24" WidthRequest="24"/>
+                <Label Grid.Column="1" Text="Datos de la Compra" TextColor="Black" FontSize="20" FontAttributes="Bold" 
+                       VerticalOptions="Center" HorizontalOptions="Center"></Label>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Label Text="Cliente:" TextColor="#2D2942" FontSize="16" FontAttributes="Bold"/>
+                <Label Text="Correo:" TextColor="#2D2942" FontSize="16" Padding="0,30,0,0" FontAttributes="Bold"/>
+
+                <Label x:Name="txtNombreCliente" TextColor="#2D2942" FontSize="16" HorizontalTextAlignment="End"/>
+                <Label x:Name="txtCorreo" TextColor="#2D2942" FontSize="16" Padding="0,30,0,0" HorizontalTextAlignment="End"/>
+
+                <Label Text="Coordenadas de Entrega:" TextColor="#2D2942" FontSize="16" Padding="0,80,0,0" FontAttributes="Bold"/>
+                <Label Text="(Las coordenadas por defecto son las especificadas en su perfil)" Opacity="0.5" TextColor="#2D2942" FontSize="12.5" Padding="0,110,0,0"/>
+
+                <StackLayout Padding="0,10,0,0">
+                    <Label Text="Latitud" TextColor="#2196F3" FontSize="16" Padding="0,145,0,0"/>
+                    <Entry Placeholder="Una latitud uwu" x:Name="txtLatitud" Margin="70,-40,120,0" IsEnabled="false"/>
+                    <Label Text="Longitud" TextColor="#2196F3" FontSize="16" Margin="0,0,0,0"/>
+                    <Entry Placeholder="Una longitud uwu" x:Name="txtLongitud" Margin="70,-40,120,0" IsEnabled="false"/>
+                </StackLayout>
+                <Button x:Name="btnMapa" Text="Cambiar Coordenadas" FontSize="11" Padding="10,10,10,10" Margin="240,160,0,130" TextColor="White" BackgroundColor="#2196F3" CornerRadius="20"/>
+
+                <Label Text="Método de Pago:" TextColor="#2D2942" FontSize="16" Padding="0,260,0,0" FontAttributes="Bold"/>
+                <StackLayout Padding="0,280,0,0">
+                    <Picker x:Name="cmbMetodoPago" Title="Seleccione un método de pago" ItemDisplayBinding="{Binding metodoPago}" />
+                </StackLayout>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Line BackgroundColor="DarkGray" Margin="0,0,0,97"></Line>
+                <Label Text="Total a Pagar:" FontAttributes="Bold" TextColor="#2D2942" FontSize="16" Padding="0,10,0,0"/>
+                <Label x:Name="txtTotal" FontAttributes="Bold" TextColor="#2D2942" FontSize="16" Padding="0,10,0,0" HorizontalTextAlignment="End"/>
+                <Line BackgroundColor="DarkGray" Margin="0,40,0,57"></Line>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Button Text="Realizar Pedido" CornerRadius="32" HorizontalOptions="Center" BackgroundColor="#2196F3" TextColor="White" FontSize="14" WidthRequest="260"></Button>
+            </Grid>
+        </Grid>
+    </Grid>
+
+</ContentPage>

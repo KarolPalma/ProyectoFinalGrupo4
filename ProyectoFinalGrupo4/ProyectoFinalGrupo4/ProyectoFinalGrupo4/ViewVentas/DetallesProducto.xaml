@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinalGrupo4.DetallesProducto"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="0.8*, *">
+        <ImageButton Source="back.png" Margin="20" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="Start"
+                             HeightRequest="24" WidthRequest="24" Clicked="Button_Back"/>
+        <Grid WidthRequest="280" HeightRequest="200" HorizontalOptions="Center" VerticalOptions="Center">
+            <Image x:Name="imgProducto"/>
+        </Grid>
+        <StackLayout Spacing="20" Grid.Row="1" Margin="30,0">
+            <Grid>
+                <StackLayout>
+                    <Label x:Name="txtNombreProducto" TextColor="#2D2942" FontSize="25" FontAttributes="Bold"/>
+                    <Label Text="Proveedor y Categoria:" TextColor="#2D2942" FontSize="14" Opacity="0.5" VerticalOptions="Fill"/>
+                </StackLayout>
+                <Label x:Name="txtPrecio" TextColor="#2D2942" FontSize="20" 
+                       FontAttributes="Bold" HorizontalOptions="End"/>
+                <Label x:Name="txtCategoriaProveedor" Margin="0,40,0,0" TextColor="#2D2942" FontSize="14" Opacity="0.5" VerticalOptions="Fill" HorizontalOptions="End"/>
+            </Grid>
+            <StackLayout>
+                <Label Text="Descripción" TextColor="#2D2942" FontSize="16" FontAttributes="Bold"/>
+                <Label x:Name="txtDescripcion" TextColor="#2D2942" FontSize="14" Opacity="0.5" VerticalOptions="Fill"/>
+                <Label x:Name="txtCantidad" TextColor="#2D2942" FontSize="14" Opacity="0.5" VerticalOptions="Fill"/>
+            </StackLayout>
+            <StackLayout>
+                <Label x:Name="txtImpuesto" Text="Impuesto Incluido" TextColor="#2D2942" FontSize="14" Opacity="0.5" HorizontalOptions="Start" Margin="0,0,0,-23"/>
+                <Label x:Name="txtUnidades" TextColor="#2D2942" FontSize="14" Opacity="0.5" HorizontalOptions="End" />
+                <Button Clicked="verImpuesto" Text="Impuesto Inclu" TextColor="Transparent" FontSize="14" BackgroundColor="Transparent" HorizontalOptions="Start" Margin="-11,-42,0,-12"/>
+            </StackLayout>
+            <StackLayout>
+                <Picker x:Name="cmbDescuentos" Title="Seleccionar un Descuento" ItemDisplayBinding="{Binding descripcion}" />
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal" Spacing="30">
+                <Grid>
+                    <Ellipse Aspect="Uniform" WidthRequest="32" HeightRequest="32" Fill="White"/>
+                    <Path Aspect="Uniform" Stroke="#4d8f5a" StrokeThickness="2" Data="M5 12H19" StrokeLineCap="Round" 
+                          StrokeLineJoin="Round" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Button Text="o" TextColor="Transparent" BackgroundColor="Transparent" Clicked="RestarCantidad"></Button>
+                </Grid>
+                <Label x:Name="txtCantidadesCarrito" TextColor="Black" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Grid>
+                    <Ellipse Aspect="Uniform" WidthRequest="32" HeightRequest="32" Fill="White"/>
+                    <Path Aspect="Uniform" Stroke="#4d8f5a" StrokeThickness="2" Data="M12 5V19" StrokeLineCap="Round" 
+                          StrokeLineJoin="Round" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Path Aspect="Uniform" Stroke="#4d8f5a" StrokeThickness="2" Data="M5 12H19" StrokeLineCap="Round" 
+                          StrokeLineJoin="Round" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Button Text="o" TextColor="Transparent" BackgroundColor="Transparent" Clicked="SumarCantidad"></Button>
+                </Grid>
+                <Button WidthRequest="195" HeightRequest="46" CornerRadius="32" HorizontalOptions="End" BackgroundColor="#2196F3"
+                        Text="Añadir al Carrito" TextColor="White" FontSize="14" Clicked="AñadirCarrito"/>
+            </StackLayout>
+        </StackLayout>
+    </Grid>
+    
+</ContentPage>
