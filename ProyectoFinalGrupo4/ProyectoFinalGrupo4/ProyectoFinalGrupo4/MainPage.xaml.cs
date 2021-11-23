@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using ProyectoFinalGrupo4.Screens;
 
 namespace ProyectoFinalGrupo4
 {
@@ -25,11 +26,17 @@ namespace ProyectoFinalGrupo4
         RepositoryBitacora repositoryBitacora = new RepositoryBitacora();
 
 
-        public MainPage()
+        public MainPage(string nombre, string rol)
+        {
+            InitializeComponent();
+            prueba1.Text = nombre;
+            prueba2.Text = rol;
+        }
+            public MainPage()
         {
             InitializeComponent();
             
-            List<Productos> productos = new List<Productos>();
+            //List<Productos> productos = new List<Productos>();
             /* ESTO ES PARA LLAMAR A TODA LA LISTA
             administradores = repository.ListAdministradores();
             lstAdministradores.ItemsSource = administradores;
@@ -75,7 +82,7 @@ namespace ProyectoFinalGrupo4
             lstAdministradores.ItemsSource = repositoryBitacora.BuscarRegistros(DateTime.Now);
             */
 
-            repositorySesiones.UsuarioLogin("mguarda", "12345");
+            //repositorySesiones.UsuarioLogin("mguarda", "12345");
 
         }
 
@@ -93,6 +100,12 @@ namespace ProyectoFinalGrupo4
         private void Button_Clicked_2(object sender, EventArgs e)
         {
             //repositoryProductos.DeactivateProducto(producto, 1);
+        }
+
+        async private void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            Navigation.InsertPageBefore(new LoginPage(), Navigation.NavigationStack[0]);
+            await Navigation.PopToRootAsync();
         }
     }
 }

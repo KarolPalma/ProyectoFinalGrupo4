@@ -1223,5 +1223,5 @@ C:\Users\Usuario\source\repos\ProyectoFinalGrupo4\ProyectoFinalGrupo4\ProyectoFi
 C:\Users\Usuario\source\repos\ProyectoFinalGrupo4\ProyectoFinalGrupo4\ProyectoFinalGrupo4.Android\obj\Debug\110\res\drawable\carrito.png
 C:\Users\Usuario\source\repos\ProyectoFinalGrupo4\ProyectoFinalGrupo4\ProyectoFinalGrupo4.Android\obj\Debug\110\res\drawable\cart.png
 C:\Users\Usuario\source\repos\ProyectoFinalGrupo4\ProyectoFinalGrupo4\ProyectoFinalGrupo4.Android\obj\Debug\110\res\drawable\filter.png
-C:\Users\Usuario\source\repos\ProyectoFinalGrupo4\ProyectoFinalGrupo4\ProyectoFinalGrupo4.Android\obj\Debug\110\ProyectoFinalGrupo4.Android.csproj.CopyComplete
 C:\Users\Usuario\source\repos\ProyectoFinalGrupo4\ProyectoFinalGrupo4\ProyectoFinalGrupo4.Android\obj\Debug\110\res\drawable\cartpunto.png
+C:\Users\Usuario\source\repos\ProyectoFinalGrupo4\ProyectoFinalGrupo4\ProyectoFinalGrupo4.Android\obj\Debug\110\ProyectoFinalGrupo4.Android.csproj.CopyComplete

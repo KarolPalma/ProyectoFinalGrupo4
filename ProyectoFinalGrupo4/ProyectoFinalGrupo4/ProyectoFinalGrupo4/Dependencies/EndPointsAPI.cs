@@ -9,8 +9,8 @@ namespace ProyectoFinalGrupo4.Dependencies
 {
     class EndPointsAPI
     {
-        public static String URL = "http://192.168.0.10:81/Sales_App/";
-        //public static String URL = "http://192.168.0.15:81/Sales_App/";
+        //public static String URL = "http://192.168.0.10:81/Sales_App/";
+        public static String URL = "http://192.168.0.15:81/Sales_App/";
 
         //EndPoints de Sesion
         public static String login = URL + "sesiones/login.php";

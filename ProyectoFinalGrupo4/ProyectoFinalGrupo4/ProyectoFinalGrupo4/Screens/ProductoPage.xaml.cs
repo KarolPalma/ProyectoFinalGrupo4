@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ProyectoFinalGrupo4.Models;
@@ -192,27 +192,6 @@ namespace ProyectoFinalGrupo4.Screens
             btnDesactivar.IsVisible = true;
         }
 
-        public void Filtrar(object sender, TextChangedEventArgs e)
-        {
-            var buscador = srcBuscar.Text;
-            List<Productos> listaProductos;
-            listaProductos = repository.ListProductos();
-            lstProductos.ItemsSource = listaProductos;
-
-            lstProductos.BeginRefresh();
-            if (!string.IsNullOrWhiteSpace(buscador))
-            {
-                lstProductos.ItemsSource = listaProductos.Where(producto => string.Equals(producto.nombre, buscador, StringComparison.OrdinalIgnoreCase)).Where(producto => producto.nombre.ToUpper().Contains(buscador.ToUpper()));
-                lstProductos.EndRefresh();
-            }
-            else
-            {
-                listaProductos = repository.ListProductos();
-                lstProductos.ItemsSource = listaProductos;
-                lstProductos.EndRefresh();
-            }
-        }
-
         private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -290,5 +269,25 @@ namespace ProyectoFinalGrupo4.Screens
             }
         }
 
+        public void Filtrar(object sender, TextChangedEventArgs e)
+        {
+            var buscador = srcBuscar.Text;
+            List<Productos> listaProductos;
+            listaProductos = repository.ListProductos();
+            lstProductos.ItemsSource = listaProductos;
+
+            lstProductos.BeginRefresh();
+            if (!string.IsNullOrWhiteSpace(buscador))
+            {
+                lstProductos.ItemsSource = listaProductos.Where(producto => string.Equals(producto.nombre, buscador, StringComparison.OrdinalIgnoreCase)).Where(producto => producto.nombre.ToUpper().Contains(buscador.ToUpper()));
+                lstProductos.EndRefresh();
+            }
+            else
+            {
+                listaProductos = repository.ListProductos();
+                lstProductos.ItemsSource = listaProductos;
+                lstProductos.EndRefresh();
+            }
+        }
     }
 }

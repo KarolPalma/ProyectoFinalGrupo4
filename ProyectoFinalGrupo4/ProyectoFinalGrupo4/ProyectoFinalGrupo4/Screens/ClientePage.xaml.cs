@@ -164,7 +164,7 @@ namespace ProyectoFinalGrupo4.Screens
             txtConfirmacion.Text = cliente.clave;
             estado = cliente.estado;
             btnGuardar.Text = "Modificar Cliente";
-            if (estado == false) //Si el estado del Administrador es INACTIVO
+            if (estado == false) //Si el estado del Cliente es INACTIVO
             {
                 btnDesactivar.Text = "Activar Cliente";
                 btnDesactivar.BackgroundColor = Color.Green;
@@ -252,8 +252,8 @@ namespace ProyectoFinalGrupo4.Screens
         {
             bool respuesta = true;
 
-            if (string.IsNullOrEmpty(txtIdentificacion.Text) || string.IsNullOrEmpty(txtNombres.Text) || string.IsNullOrEmpty(txtApellidos.Text) || string.IsNullOrEmpty(txtTelefono.Text) ||
-            string.IsNullOrEmpty(txtCorreo.Text) || string.IsNullOrEmpty(txtUsuario.Text) || string.IsNullOrEmpty(txtContrasenia.Text) || string.IsNullOrEmpty(txtConfirmacion.Text))
+            if (string.IsNullOrEmpty(txtIdentificacion.Text) || string.IsNullOrEmpty(txtNombres.Text) || string.IsNullOrEmpty(txtApellidos.Text) || string.IsNullOrEmpty(txtTelefono.Text) || string.IsNullOrEmpty(txtLatitud.Text) ||
+            string.IsNullOrEmpty(txtLongitud.Text) || string.IsNullOrEmpty(txtCorreo.Text) || string.IsNullOrEmpty(txtUsuario.Text) || string.IsNullOrEmpty(txtContrasenia.Text) || string.IsNullOrEmpty(txtConfirmacion.Text))
             {
                 DisplayAlert("Llenado de Datos", "Debe llenar todos los campos", "Ok");
                 respuesta = false;

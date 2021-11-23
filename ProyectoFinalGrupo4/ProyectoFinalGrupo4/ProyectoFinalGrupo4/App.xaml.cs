@@ -2,6 +2,8 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ProyectoFinalGrupo4.Screens;
+using ProyectoFinalGrupo4.Respositories;
+using Xamarin.Essentials;
 
 namespace ProyectoFinalGrupo4
 {
@@ -12,7 +14,10 @@ namespace ProyectoFinalGrupo4
             InitializeComponent();
 
             //MainPage = new MainPage();
+
             MainPage = new NavigationPage(new MasterPage());
+            
+            
         }
 
         protected override void OnStart()

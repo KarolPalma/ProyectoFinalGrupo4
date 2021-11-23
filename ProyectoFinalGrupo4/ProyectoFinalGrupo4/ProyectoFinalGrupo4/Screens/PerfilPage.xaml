@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProyectoFinalGrupo4.Screens.RegistroPage">
-    <ContentPage.Content >
+             x:Class="ProyectoFinalGrupo4.Screens.PerfilPage">
+    <ContentPage.Content>
         <ScrollView VerticalOptions="Fill">
             <StackLayout Padding="24">
-                <!--Formulario de Registro-->
-                <Label Text="Registrarse" HorizontalOptions="Center" FontAttributes="Bold" FontSize="22"></Label>
-                <Entry x:Name="txtIdCliente" IsVisible="false"/>
+                <!--Formulario de Creación y Modificación de Clientes-->
+                <Label Text="Modificar Perfil" HorizontalOptions="Center" FontAttributes="Bold" FontSize="22"></Label>
+                <Entry x:Name="txtIdUsuario" IsVisible="false"/>
                 <Label Text="Identificación" TextColor="#2196F3" FontSize="16" Margin="0,20,0,0"/>
                 <Entry Placeholder="Ingrese su número de identidad" x:Name="txtIdentificacion" MaxLength="15" Keyboard="Telephone"/>
                 <Label Text="Nombres" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
@@ -18,13 +18,15 @@
                 <Entry Placeholder="Ingrese un teléfono" x:Name="txtTelefono" Keyboard="Telephone" MaxLength="8"/>
                 <Label Text="Fecha de Nacimiento" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
                 <DatePicker x:Name="txtNacimiento" Format="dd/MM/yyyy"/>
-                <Label Text="Direccion" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
+                
+                <Label Text="Direccion" x:Name="lblDirecccion" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
                 <Entry Placeholder="Ingrese una dirección" x:Name="txtDireccion"/>
-                <Label Text="Latitud" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
+                <Label Text="Latitud" x:Name="lblLatitud" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
                 <Entry Placeholder="Seleccione latitud" x:Name="txtLatitud" Margin="70,-40,110,0" IsEnabled="false"/>
-                <Label Text="Longitud" TextColor="#2196F3" FontSize="16" Margin="0,15,0,0"/>
+                <Label Text="Longitud" x:Name="lblLongitud" TextColor="#2196F3" FontSize="16" Margin="0,15,0,0"/>
                 <Entry Placeholder="Seleccione longitud" x:Name="txtLongitud" Margin="70,-40,110,0" IsEnabled="false"/>
                 <Button x:Name="btnMapa" Clicked="btnAbrirMapa" Text="Seleccione las Coordenadas" FontSize="11" Padding="10,10,10,10" Margin="240,-80,0,0" TextColor="White" BackgroundColor="#2196F3" CornerRadius="20"/>
+                
                 <Label Text="Usuario" TextColor="#2196F3" FontSize="16" Margin="0,15,0,0"/>
                 <Entry Placeholder="Ingrese el usuario" x:Name="txtUsuario"/>
                 <Label Text="Correo electrónico" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
@@ -33,7 +35,7 @@
                 <Entry Placeholder="Ingrese una contraseña" x:Name="txtContrasenia" IsPassword="True"/>
                 <Label Text="Confirmación de contraseña" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
                 <Entry Placeholder="Confirme la contraseña" x:Name="txtConfirmacion" IsPassword="True"/>
-                <Button x:Name="btnGuardar" Clicked="btnGuardarCliente_Clicked" Text="Registrarse" TextColor="White" BackgroundColor="#2196F3" CornerRadius="20" Margin="20"/>
+                <Button x:Name="btnModificar" Clicked="btnModificar_Clicked" Text="Modificar Perfil" TextColor="White" BackgroundColor="#2196F3" CornerRadius="20" Margin="20"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -43,3 +43,4 @@ C:\Users\Usuario\source\repos\ProyectoFinalGrupo4\ProyectoFinalGrupo4\ProyectoFi
 C:\Users\Usuario\source\repos\ProyectoFinalGrupo4\ProyectoFinalGrupo4\ProyectoFinalGrupo4\obj\Debug\netstandard2.0\ViewVentas\FacturacionPage.xaml.g.cs
 C:\Users\Usuario\source\repos\ProyectoFinalGrupo4\ProyectoFinalGrupo4\ProyectoFinalGrupo4\obj\Debug\netstandard2.0\ViewVentas\VentasPage.xaml.g.cs
 C:\Users\Usuario\source\repos\ProyectoFinalGrupo4\ProyectoFinalGrupo4\ProyectoFinalGrupo4\obj\Debug\netstandard2.0\ViewVentas\DetallesProducto.xaml.g.cs
+C:\Users\Usuario\source\repos\ProyectoFinalGrupo4\ProyectoFinalGrupo4\ProyectoFinalGrupo4\obj\Debug\netstandard2.0\Screens\PerfilPage.xaml.g.cs
