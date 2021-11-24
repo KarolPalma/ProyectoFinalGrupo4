@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ProyectoFinalGrupo4.Respositories;
+using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ProyectoFinalGrupo4.Respositories;
 
 namespace ProyectoFinalGrupo4.Screens
 {
@@ -19,6 +15,12 @@ namespace ProyectoFinalGrupo4.Screens
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+
+            if (repositorySesiones.RevisarToken())
+            {
+                rol.Text = Preferences.Get("idRol", "");
+                Navigation.PushAsync(new MasterPage(int.Parse(rol.Text)));
+            }
         }
 
         async void IniciarSesion(object sender, EventArgs e)
@@ -29,20 +31,9 @@ namespace ProyectoFinalGrupo4.Screens
             }
             else if (repositorySesiones.UsuarioLogin(txtUsuario.Text, txtPassword.Text))
             {
-                if (repositorySesiones.RevisarToken())
-                {
-                    txtUsuario.Text = Preferences.Get("usuario", "");
-                    rol.Text = Preferences.Get("idRol", "");
-                    idSesionUsuario.Text = Preferences.Get("idSesionUsuario", "");
-                    int unu = int.Parse(Preferences.Get("idSesionUsuario", ""));
-                    //Navigation.InsertPageBefore(new MainPage(txtUsuario.Text, rol.Text), Navigation.NavigationStack[0]);
-                    Navigation.InsertPageBefore(new MasterPage(int.Parse(rol.Text)), Navigation.NavigationStack[0]);
-                    await Navigation.PopToRootAsync();
-                }
-                else
-                {
-                    await DisplayAlert("Error al Iniciar de Sesión", "No se pudo iniciar sesión", "Ok");
-                }
+                rol.Text = Preferences.Get("idRol", "");
+                Navigation.InsertPageBefore(new MasterPage(int.Parse(rol.Text)), Navigation.NavigationStack[0]);
+                await Navigation.PopToRootAsync();
             }
             else
             {

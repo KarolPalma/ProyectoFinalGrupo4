@@ -1,9 +1,7 @@
 ﻿using Newtonsoft.Json;
 using ProyectoFinalGrupo4.Dependencies;
 using ProyectoFinalGrupo4.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;

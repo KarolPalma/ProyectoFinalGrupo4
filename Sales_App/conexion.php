@@ -1,8 +1,8 @@
 <?php //Archivo PHP que establece la conexion a la BD, para la conexion al 000webhost estas variables cambian de valor
 	$servidor="localhost";
 	$usuario="root";
-	$clave="51342";
-	//$clave="kp198103";
+	//$clave="51342";
+	$clave="kp198103";
 	$bd="sales_app";
 	
 	$bdcon = true;

@@ -1,13 +1,9 @@
-﻿using System;
+﻿using ProyectoFinalGrupo4.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ProyectoFinalGrupo4.Models;
-using ProyectoFinalGrupo4.Respositories;
 
 namespace ProyectoFinalGrupo4.Screens
 {
@@ -22,7 +18,7 @@ namespace ProyectoFinalGrupo4.Screens
         public AdministradorPage()
         {
             InitializeComponent();
-            
+
             //ESTO ES PARA LLAMAR A TODA LA LISTA
             administradores = repository.ListAdministradores();
             lstAdministradores.ItemsSource = administradores;
@@ -75,7 +71,6 @@ namespace ProyectoFinalGrupo4.Screens
         private void MenuItem_Clicked(object sender, EventArgs e)
         {
             var admin = (sender as MenuItem).CommandParameter as Administradores;
-            txtIdAdmin.Text = admin.idAdmin.ToString();
             Administradores administrador = repository.BuscarAdministrador(admin.idAdmin);
             txtIdAdmin.Text = administrador.idAdmin.ToString();
             txtIdentificacion.Text = administrador.identificacion;
@@ -133,7 +128,7 @@ namespace ProyectoFinalGrupo4.Screens
                     limpiar();
                 }
             }
-            else if(btnDesactivar.Text == "Activar Administrador" && Validaciones() == true)
+            else if (btnDesactivar.Text == "Activar Administrador" && Validaciones() == true)
             {
                 respuesta = await DisplayAlert("¡Atención!", "¿Desea activar al administrador? " + txtUsuario.Text, "Si", "No");
                 if (respuesta == true)
@@ -142,7 +137,6 @@ namespace ProyectoFinalGrupo4.Screens
                     txtTelefono.Text, txtNacimiento.Date, usuarioActual, txtUsuario.Text, txtCorreo.Text, txtContrasenia.Text, "", true);
                     repository.UpdateAdministrador(administrador, usuarioActual);
                     limpiar();
-                    //await Navigation.PushAsync(new MainPage());
                 }
             }
         }

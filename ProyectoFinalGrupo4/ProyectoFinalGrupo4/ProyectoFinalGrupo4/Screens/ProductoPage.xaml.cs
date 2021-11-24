@@ -1,15 +1,12 @@
-﻿using System;
+﻿using ProyectoFinalGrupo4.Models;
+using ProyectoFinalGrupo4.Respositories;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ProyectoFinalGrupo4.Models;
-using ProyectoFinalGrupo4.Respositories;
-using Xamarin.Essentials;
-using System.IO;
 
 namespace ProyectoFinalGrupo4.Screens
 {
@@ -104,7 +101,7 @@ namespace ProyectoFinalGrupo4.Screens
                 }
                 else
                 {
-                    await DisplayAlert("Error", "No se actualizo el producto", "OK");
+                    await DisplayAlert("Imagen", "La imagen es demasiado grande, no pudo ser guardada", "OK");
                 }
                 limpiar();
             }
@@ -159,7 +156,7 @@ namespace ProyectoFinalGrupo4.Screens
             }
         }
 
-        private async void MenuItem_Clicked(object sender, EventArgs e)
+        private void MenuItem_Clicked(object sender, EventArgs e)
         {
             var product = (sender as MenuItem).CommandParameter as Productos;
             txtIdProducto.Text = product.idProducto.ToString();
@@ -175,6 +172,7 @@ namespace ProyectoFinalGrupo4.Screens
             txtCantidadMax.Text = producto.cantidadMaxima.ToString();
             imgProducto.IsVisible = true;
             imgProducto.Source = producto.fotoSource;
+            foto = producto.foto;
             txtPrecio.Text = producto.precio.ToString();
             cmbImpuesto.SelectedIndex = producto.idImpuesto - 1;
             estado = producto.estado;
@@ -190,6 +188,27 @@ namespace ProyectoFinalGrupo4.Screens
                 btnDesactivar.BackgroundColor = Color.Red;
             }
             btnDesactivar.IsVisible = true;
+        }
+
+        public void Filtrar(object sender, TextChangedEventArgs e)
+        {
+            var buscador = srcBuscar.Text;
+            List<Productos> listaProductos;
+            listaProductos = repository.ListProductos();
+            lstProductos.ItemsSource = listaProductos;
+
+            lstProductos.BeginRefresh();
+            if (!string.IsNullOrWhiteSpace(buscador))
+            {
+                lstProductos.ItemsSource = listaProductos.Where(producto => string.Equals(producto.nombre, buscador, StringComparison.OrdinalIgnoreCase)).Where(producto => producto.nombre.ToUpper().Contains(buscador.ToUpper()));
+                lstProductos.EndRefresh();
+            }
+            else
+            {
+                listaProductos = repository.ListProductos();
+                lstProductos.ItemsSource = listaProductos;
+                lstProductos.EndRefresh();
+            }
         }
 
         private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
@@ -269,25 +288,5 @@ namespace ProyectoFinalGrupo4.Screens
             }
         }
 
-        public void Filtrar(object sender, TextChangedEventArgs e)
-        {
-            var buscador = srcBuscar.Text;
-            List<Productos> listaProductos;
-            listaProductos = repository.ListProductos();
-            lstProductos.ItemsSource = listaProductos;
-
-            lstProductos.BeginRefresh();
-            if (!string.IsNullOrWhiteSpace(buscador))
-            {
-                lstProductos.ItemsSource = listaProductos.Where(producto => string.Equals(producto.nombre, buscador, StringComparison.OrdinalIgnoreCase)).Where(producto => producto.nombre.ToUpper().Contains(buscador.ToUpper()));
-                lstProductos.EndRefresh();
-            }
-            else
-            {
-                listaProductos = repository.ListProductos();
-                lstProductos.ItemsSource = listaProductos;
-                lstProductos.EndRefresh();
-            }
-        }
     }
 }

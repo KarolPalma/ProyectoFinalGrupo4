@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 using Xamarin.Forms;
 
 namespace ProyectoFinalGrupo4.Models
@@ -12,11 +8,33 @@ namespace ProyectoFinalGrupo4.Models
         public int idProveedor { get; set; }
         public string nombre { get; set; }
         public string contacto { get; set; }
-        public bool telefono { get; set; }
-        public int correo { get; set; }
+        public string telefono { get; set; }
+        public string correo { get; set; }
         public string direccion { get; set; }
-        public string latitud { get; set; }
-        public bool longitud { get; set; }
         public bool estado { get; set; }
+
+        public Proveedores()
+        {
+        }
+
+        public Proveedores(string nombre, string contacto, string telefono, string correo, string direccion)
+        {
+            this.nombre = nombre;
+            this.contacto = contacto;
+            this.telefono = telefono;
+            this.correo = correo;
+            this.direccion = direccion;
+        }
+
+        public Proveedores(int idProveedor, string nombre, string contacto, string telefono, string correo, string direccion, bool estado)
+        {
+            this.idProveedor = idProveedor;
+            this.nombre = nombre;
+            this.contacto = contacto;
+            this.telefono = telefono;
+            this.correo = correo;
+            this.direccion = direccion;
+            this.estado = estado;
+        }
     }
 }

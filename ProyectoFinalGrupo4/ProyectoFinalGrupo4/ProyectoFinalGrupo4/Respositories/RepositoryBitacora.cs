@@ -35,7 +35,7 @@ namespace ProyectoFinalGrupo4.Respositories
         }
 
         public List<Bitacora> BuscarRegistros(DateTime fecha)
-        {   
+        {
             string URL = EndPointsAPI.buscarBitacora;
             WebClient webClient = new WebClient();
 

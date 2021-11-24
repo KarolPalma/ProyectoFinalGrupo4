@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 using Xamarin.Forms;
 
@@ -55,7 +52,7 @@ namespace ProyectoFinalGrupo4.Models
                 Stream stream = new MemoryStream(byteArray);
                 return ImageSource.FromStream(() => stream);
             }
-            
+
         }
 
         public Productos()

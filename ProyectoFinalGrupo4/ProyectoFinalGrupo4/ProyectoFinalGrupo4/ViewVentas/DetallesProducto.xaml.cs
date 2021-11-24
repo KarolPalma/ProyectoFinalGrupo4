@@ -2,9 +2,6 @@
 using ProyectoFinalGrupo4.Respositories;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -43,7 +40,7 @@ namespace ProyectoFinalGrupo4.ViewVentas
             {
                 cmbDescuentos.ItemsSource = descuentos;
             }
-            
+
         }
 
         private void Button_Back(object sender, EventArgs e)
@@ -79,16 +76,10 @@ namespace ProyectoFinalGrupo4.ViewVentas
 
         private void verImpuesto(object sender, EventArgs e)
         {
-            if (cmbDescuentos.SelectedItem is null)
-            {
-                cmbDescuentos.SelectedItem = descuentos[0];
-            }
-            Descuentos descuento = (Descuentos)cmbDescuentos.SelectedItem;
-
             DisplayAlert("Información de Impuesto", productoGlobal.nombreImpuesto + " (" + productoGlobal.porcentajeImpuesto + "%)", "Ok");
         }
 
-        private void AñadirCarrito (object sender, EventArgs e)
+        private void AñadirCarrito(object sender, EventArgs e)
         {
             int idUsuario = int.Parse(Preferences.Get("idUsuario", "0"));
             int idProducto = productoGlobal.idProducto;

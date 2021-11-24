@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Xamarin.Forms;
 
 namespace ProyectoFinalGrupo4.Dependencies
 {
@@ -24,6 +19,7 @@ namespace ProyectoFinalGrupo4.Dependencies
         public static String deactivateAdmin = URL + "administradores/desactivarAdmin.php";
         public static String listarAdmins = URL + "administradores/listarAdmins.php";
         public static String buscarAdmin = URL + "administradores/buscarAdmin.php";
+        public static String buscarAdminActual = URL + "administradores/buscarAdminActual.php";
 
         //EndPoints de Clientes
         public static String verificarIdeCliente = URL + "clientes/verificarIdentificacion.php";
@@ -44,16 +40,36 @@ namespace ProyectoFinalGrupo4.Dependencies
         public static String subirImagen = URL + "productos/guardarImagen.php";
 
         //EndPoints de Categorias
+        public static String insertCategoria = URL + "categorias/insertCategoria.php";
+        public static String updateCategoria = URL + "categorias/actualizarCategoria.php";
+        public static String deactivateCategoria = URL + "categorias/desactivarCategoria.php";
+        public static String listarCategorias = URL + "categorias/listarCategorias.php";
+        public static String buscarCategoria = URL + "categorias/buscarCategoria.php";
         public static String llenarCategorias = URL + "categorias/llenarCategorias.php";
 
         //EndPoints de Proveedores
-        public static String llenarProveedores = URL + "proveedores/llenarProveedores.php";
+        public static String insertProveedor = URL + "proveedores/insertProveedor.php";
+        public static String updateProveedor = URL + "proveedores/actualizarProveedor.php";
+        public static String deactivateProveedor = URL + "proveedores/desactivarProveedor.php";
+        public static String listarProveedores = URL + "proveedores/listarProveedores.php";
+        public static String buscarProveedor = URL + "proveedores/buscarProveedor.php";
+        public static String llenarProveedores = URL + "proveedores/listarProveedores.php";
 
         //EndPoints de Impuestos
+        public static String insertImpuesto = URL + "impuestos/insertImpuesto.php";
+        public static String updateImpuesto = URL + "impuestos/actualizarImpuesto.php";
+        public static String deactivateImpuesto = URL + "impuestos/desactivarImpuesto.php";
+        public static String listarImpuestos = URL + "impuestos/listarImpuestos.php";
+        public static String buscarImpuesto = URL + "impuestos/buscarImpuesto.php";
         public static String llenarImpuestos = URL + "impuestos/llenarImpuestos.php";
         public static String traerImpuesto = URL + "impuestos/traerImpuesto.php";
 
         //EndPoints de Descuentos
+        public static String insertDescuento = URL + "descuentos/insertDescuento.php";
+        public static String updateDescuento = URL + "descuentos/actualizarDescuento.php";
+        public static String deactivateDescuento = URL + "descuentos/desactivarDescuento.php";
+        public static String listarDescuentos = URL + "descuentos/listarDescuentos.php";
+        public static String buscarDescuento = URL + "descuentos/buscarDescuento.php";
         public static String llenarDescuentos = URL + "descuentos/llenarDescuentos.php";
         public static String traerDescuento = URL + "descuentos/traerDescuento.php";
 
@@ -61,7 +77,7 @@ namespace ProyectoFinalGrupo4.Dependencies
         public static String listarBitacora = URL + "bitacora/listarBitacora.php";
         public static String buscarBitacora = URL + "bitacora/buscarBitacora.php";
 
-        //EndPoints de Ventas
+        //EndPoints de Ventas y Compras (porque mientras lo hacia olvide que eran lo mismo...)
         public static String verProductos = URL + "ventas/verProductos.php";
         public static String verificarInCarrito = URL + "ventas/verificarInCarrito.php";
         public static String insertCarrito = URL + "ventas/addCarrito.php";
@@ -70,6 +86,14 @@ namespace ProyectoFinalGrupo4.Dependencies
         public static String eliminarDelCarrito = URL + "ventas/eliminarDelCarrito.php";
 
         public static String traerMetodosPago = URL + "ventas/traerMetodosPago.php";
+
+        //EndPoints de Facturas Ventas
+        public static String facturarVenta = URL + "facturasVentas/insertarFacturaVentas.php";
+        public static String recuperarFacturaGet = URL + "reporteria/facturaPDF.php";
+
+        //EndPoints de Facturas Compras
+        public static String facturarCompra = URL + "facturasCompras/insertarFacturaCompras.php";
+        public static String recuperarFacturaCompraGet = URL + "reporteria/facturaCompraPDF.php";
 
     }
 }

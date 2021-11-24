@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinalGrupo4.ViewCompras.CarritoPageCompra"
+             NavigationPage.HasNavigationBar="False" Title="Carrito">
+
+    <Grid>
+        <Grid RowDefinitions="30, Auto, 350, *, 40" RowSpacing="20" Padding="30">
+            <Grid ColumnDefinitions="Auto, *, Auto" >
+                <ImageButton Source="back.png" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="Start"
+                             HeightRequest="24" WidthRequest="24" Clicked="ImageButton_Clicked"/>
+                <Label Grid.Column="1" Text="Carrito de Compras" TextColor="Black" FontSize="20" FontAttributes="Bold" 
+                       VerticalOptions="Center" HorizontalOptions="Center"></Label>
+            </Grid>
+            <CollectionView Grid.Row="2" SelectionMode="Single" x:Name="listViewProductos"
+                            SelectedItem="{Binding idProducto}" SelectionChanged="listViewProductos_SelectionChanged">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="1" VerticalItemSpacing="10" HorizontalItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.EmptyView>
+                    <Label Text="No se hay ningún producto en el carrito" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowDefinitions="0,*" HeightRequest="100" BackgroundColor="White" Padding="10,20">
+                            <StackLayout Grid.Row="1" Orientation="Horizontal" VerticalOptions="Start" 
+                                     HorizontalOptions="FillAndExpand">
+                                <Image Source="{Binding fotoSource}" HeightRequest="70" WidthRequest="100" HorizontalOptions="Start" Margin="0,0,10,0"/>
+                                <StackLayout Spacing="5" VerticalOptions="Start">
+                                    <Label Text="{Binding nombre}" TextColor="#2D2942" FontSize="14"/>
+                                    <Label Text="{Binding descripcion}" TextColor="#2D2942" FontSize="12" Opacity="0.5"/>
+                                    <Label Text="{Binding precioConDescuento, StringFormat='L.{0:#.00}'}" TextColor="Red" FontSize="14" 
+                                           FontAttributes="Bold" Padding="0,5,0,0"/>
+                                    <Label Text="{Binding precioImpuestoVisualizacion}" TextColor="#2D2942" FontSize="14" Margin="100,-23,0,0" HorizontalOptions="Start" TextDecorations="Strikethrough"/>
+                                    <Label Text="Unidades en Carrito:" TextColor="#2D2942" FontSize="12" Opacity="0.5"/>
+                                    <Label Text="{Binding unidadesCarrito}" TextColor="#2D2942" FontSize="12" Margin="115,-22,0,0" HorizontalOptions="Start" Opacity="0.5"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Grid Grid.Row="3">
+                <Label Text="Subtotal:" TextColor="#2D2942" FontSize="14"/>
+                <Label Text="Impuestos:" TextColor="#2D2942" FontSize="14" Padding="0,25,0,0"/>
+                <Label Text="Descuentos:" TextColor="#2D2942" FontSize="14" Padding="0,50,0,0"/>
+                <Line BackgroundColor="DarkGray" Margin="0,78,0,20"></Line>
+                <Label Text="Total:" FontAttributes="Bold" TextColor="#2D2942" FontSize="15" Padding="0,83,0,0"/>
+
+                <Label x:Name="txtSubtotal" TextColor="#2D2942" FontSize="14" HorizontalTextAlignment="End"/>
+                <Label x:Name="txtImpuestos" TextColor="#2D2942" FontSize="14" Padding="0,25,0,0" HorizontalTextAlignment="End"/>
+                <Label x:Name="txtDescuentos" TextColor="#2D2942" FontSize="14" Padding="0,50,0,0" HorizontalTextAlignment="End"/>
+                <Label x:Name="txtTotal" FontAttributes="Bold" TextColor="#2D2942" FontSize="15" Padding="0,83,0,0" HorizontalTextAlignment="End"/>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Button x:Name="btnRealizarPedido" Text="Realizar Pedido" CornerRadius="32" HorizontalOptions="Center" BackgroundColor="#2196F3" TextColor="White" FontSize="14" WidthRequest="260"
+                        Clicked="Realizar_Pedido"></Button>
+            </Grid>
+        </Grid>
+    </Grid>
+
+</ContentPage>

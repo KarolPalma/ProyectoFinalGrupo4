@@ -1,13 +1,10 @@
-﻿using System;
+﻿using ProyectoFinalGrupo4.Models;
+using ProyectoFinalGrupo4.Respositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ProyectoFinalGrupo4.Respositories;
-using ProyectoFinalGrupo4.Models;
 
 namespace ProyectoFinalGrupo4.Screens
 {
@@ -28,7 +25,7 @@ namespace ProyectoFinalGrupo4.Screens
         public void Filtrar(object sender, TextChangedEventArgs e)
         {
             var buscador = srcBuscar.Text;
-            
+
             List<Bitacora> listaBitacora;
             listaBitacora = repository.ListarBitacora();
             lstBitacora.ItemsSource = listaBitacora;
@@ -44,7 +41,7 @@ namespace ProyectoFinalGrupo4.Screens
 
                 //lstBitacora.ItemsSource = listaBitacora.Where(bitacora => string.Equals(bitacora.fecha, buscador, StringComparison.OrdinalIgnoreCase)).Where(bitacora => bitacora.fecha.ToString().ToUpper().Contains(buscador.ToUpper()));
 
-                lstBitacora.ItemsSource = listaBitacora.Where(bitacora => string.Equals(bitacora.fecha.ToString(), mes+"/"+dia+"/"+anio + " 12:00:00 a. m.", StringComparison.OrdinalIgnoreCase)).Where(bitacora => bitacora.fecha.ToString().ToUpper().Contains(buscador.ToUpper()));
+                lstBitacora.ItemsSource = listaBitacora.Where(bitacora => string.Equals(bitacora.fecha.ToString(), mes + "/" + dia + "/" + anio + " 12:00:00 a. m.", StringComparison.OrdinalIgnoreCase)).Where(bitacora => bitacora.fecha.ToString().ToUpper().Contains(buscador.ToUpper()));
                 lstBitacora.EndRefresh();
             }
             else
@@ -71,7 +68,7 @@ namespace ProyectoFinalGrupo4.Screens
                 string dia = s[0];
                 string mes = s[1];
                 string anio = s[2];
-                string fechaBusca = mes+"/"+dia+"/"+anio;
+                string fechaBusca = mes + "/" + dia + "/" + anio;
 
                 //lstBitacora.ItemsSource = listaBitacora.Where(bitacora => string.Equals(bitacora.fecha, buscador, StringComparison.OrdinalIgnoreCase)).Where(bitacora => bitacora.fecha.ToString().ToUpper().Contains(buscador.ToUpper()));
 

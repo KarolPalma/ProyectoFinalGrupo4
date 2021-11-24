@@ -18,9 +18,9 @@
                     <Entry x:Name="rol" IsVisible="false"/>
                     <Entry x:Name="idSesionUsuario" IsVisible="false"/>
                     <Label Text="Usuario" TextColor="#4C4C4C" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-                    <Entry Placeholder="Ingrese su nombre de usuario" Text="mguarda" PlaceholderColor="#2196F3" x:Name="txtUsuario" />
+                    <Entry Placeholder="Ingrese su nombre de usuario" PlaceholderColor="#2196F3" x:Name="txtUsuario" />
                     <Label Text="Contraseña" TextColor="#4C4C4C" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,25,0,0"/>
-                    <Entry Placeholder="Ingrese su contraseña" IsPassword="True"  Text="12345" PlaceholderColor="#2196F3" x:Name="txtPassword"/>
+                    <Entry Placeholder="Ingrese su contraseña" IsPassword="True" PlaceholderColor="#2196F3" x:Name="txtPassword"/>
                     <Button Text="Ingresar" BackgroundColor="#2196F3" TextColor="White" CornerRadius="20" Margin="0,40,0,0" Clicked="IniciarSesion"/>
                     <Button Text="Registrarse" TextColor="#2196F3" FontSize="15" Margin="0,10,0,0" Background="Transparent" BorderColor="Transparent" Clicked="Registrarse"/>
                 </StackLayout>

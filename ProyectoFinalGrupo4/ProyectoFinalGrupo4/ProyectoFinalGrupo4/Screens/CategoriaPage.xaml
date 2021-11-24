@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinalGrupo4.Screens.CategoriaPage">
+    <ContentPage.Content>
+        <ScrollView VerticalOptions="Fill">
+            <StackLayout Padding="24">
+                <!--Formulario de Creación y Modificación de Categorías-->
+                <Label Text="Módulo Categorías" HorizontalOptions="Center" FontAttributes="Bold" FontSize="22"></Label>
+                <Entry x:Name="txtIdCategoria" IsVisible="false"/>
+                <Label Text="Nombre de la Categoría" TextColor="#2196F3" FontSize="16" Margin="0,20,0,0"/>
+                <Entry Placeholder="Ingrese el nombre de la categoría" x:Name="txtNombre" Keyboard="Default"/>
+                <Label Text="Descripción del Categoría" TextColor="#2196F3" FontSize="16" Margin="0,5,0,0"/>
+                <Entry Placeholder="Ingrese la descripción de la categoría" x:Name="txtDescripcion"/>
+
+                <Button x:Name="btnGuardar" Clicked="btnGuardar_Clicked" Text="Guardar Categoría" TextColor="White" BackgroundColor="#2196F3" CornerRadius="20" Margin="20"/>
+                <Button x:Name="btnDesactivar" Clicked="btnDesactivar_Clicked" Text="Desactivar Categoría" TextColor="White" BackgroundColor="Color.Red" CornerRadius="20" Margin="20,-15,20,0" IsVisible="false"/>
+
+                <!--Buscador de Categorías-->
+                <Label Text="Buscador de Categorías" HorizontalOptions="Center" FontAttributes="Bold" FontSize="22" Margin="0,15,0,10"/>
+                <SearchBar x:Name="srcBuscar" TextChanged="Filtrar" Placeholder="Ingrese el nombre de la categoría" Keyboard="Chat" TextColor="#4C4C4C" />
+
+                <!--Listado de Categorías-->
+                <Label Text="Listado de Categorías" HorizontalOptions="Center" FontAttributes="Bold" FontSize="22" Margin="0,15,0,10"/>
+                <ListView x:Name="lstCategorias" HeightRequest="500">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Vertical">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding categoria}" FontSize="18"
+                                           TextColor="#4C4C4C" Padding="30,7,0,0"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                                <ViewCell.ContextActions>
+                                    <MenuItem Clicked="MenuItem_Clicked" CommandParameter="{Binding}" Text="Modificar"></MenuItem>
+                                </ViewCell.ContextActions>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -7,7 +7,7 @@
         <Grid RowDefinitions="30, Auto, 350, *, 40" RowSpacing="20" Padding="30">
             <Grid ColumnDefinitions="Auto, *, Auto" >
                 <ImageButton Source="back.png" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="Start"
-                             HeightRequest="24" WidthRequest="24"/>
+                             HeightRequest="24" WidthRequest="24" Clicked="Button_Back"/>
                 <Label Grid.Column="1" Text="Datos de la Compra" TextColor="Black" FontSize="20" FontAttributes="Bold" 
                        VerticalOptions="Center" HorizontalOptions="Center"></Label>
             </Grid>
@@ -23,26 +23,28 @@
 
                 <StackLayout Padding="0,10,0,0">
                     <Label Text="Latitud" TextColor="#2196F3" FontSize="16" Padding="0,145,0,0"/>
-                    <Entry Placeholder="Una latitud uwu" x:Name="txtLatitud" Margin="70,-40,120,0" IsEnabled="false"/>
+                    <Entry Placeholder="Una latitud" x:Name="txtLatitud" Margin="70,-40,120,0" IsEnabled="false"/>
                     <Label Text="Longitud" TextColor="#2196F3" FontSize="16" Margin="0,0,0,0"/>
-                    <Entry Placeholder="Una longitud uwu" x:Name="txtLongitud" Margin="70,-40,120,0" IsEnabled="false"/>
+                    <Entry Placeholder="Una longitud" x:Name="txtLongitud" Margin="70,-40,120,0" IsEnabled="false"/>
                 </StackLayout>
-                <Button x:Name="btnMapa" Text="Cambiar Coordenadas" FontSize="11" Padding="10,10,10,10" Margin="240,160,0,130" TextColor="White" BackgroundColor="#2196F3" CornerRadius="20"/>
 
                 <Label Text="Método de Pago:" TextColor="#2D2942" FontSize="16" Padding="0,260,0,0" FontAttributes="Bold"/>
                 <StackLayout Padding="0,280,0,0">
                     <Picker x:Name="cmbMetodoPago" Title="Seleccione un método de pago" ItemDisplayBinding="{Binding metodoPago}" />
                 </StackLayout>
             </Grid>
+            <Grid Grid.Row="3" Margin="240,-210,0,190">
+                <Button Clicked="btnMapa_Clicked" Text="Cambiar Coordenadas" FontSize="11" Padding="10,10,10,10"  TextColor="White" BackgroundColor="#2196F3" CornerRadius="20"/>
+            </Grid>
 
-            <Grid Grid.Row="3">
+            <Grid Grid.Row="4" Padding="0,-30">
                 <Line BackgroundColor="DarkGray" Margin="0,0,0,97"></Line>
                 <Label Text="Total a Pagar:" FontAttributes="Bold" TextColor="#2D2942" FontSize="16" Padding="0,10,0,0"/>
                 <Label x:Name="txtTotal" FontAttributes="Bold" TextColor="#2D2942" FontSize="16" Padding="0,10,0,0" HorizontalTextAlignment="End"/>
                 <Line BackgroundColor="DarkGray" Margin="0,40,0,57"></Line>
             </Grid>
-            <Grid Grid.Row="4">
-                <Button Text="Realizar Pedido" CornerRadius="32" HorizontalOptions="Center" BackgroundColor="#2196F3" TextColor="White" FontSize="14" WidthRequest="260"></Button>
+            <Grid Grid.Row="5">
+                <Button Clicked="btnFinalizarCompra" Text="Finalizar Compra" CornerRadius="32" HorizontalOptions="Center" BackgroundColor="#2196F3" TextColor="White" FontSize="14" WidthRequest="260"></Button>
             </Grid>
         </Grid>
     </Grid>

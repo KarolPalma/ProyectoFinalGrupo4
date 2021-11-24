@@ -1,13 +1,10 @@
-﻿using System;
+﻿using ProyectoFinalGrupo4.Models;
+using ProyectoFinalGrupo4.Respositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ProyectoFinalGrupo4.Respositories;
-using ProyectoFinalGrupo4.Models;
 
 namespace ProyectoFinalGrupo4.Screens
 {

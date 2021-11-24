@@ -2,9 +2,6 @@
 using ProyectoFinalGrupo4.Dependencies;
 using ProyectoFinalGrupo4.Models;
 using ProyectoFinalGrupo4.Screens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Text;
 using Xamarin.Essentials;
@@ -14,7 +11,7 @@ namespace ProyectoFinalGrupo4.Respositories
 {
     public class RepositorySesiones
     {
-        
+
         public bool UsuarioLogin(string usuario, string clave)
         {
             bool sesionIniciada = false;
@@ -62,7 +59,7 @@ namespace ProyectoFinalGrupo4.Respositories
                 Preferences.Set("idSesionUsuario", "");
 
                 //PASAR AL LOGIN
-                App.Current.MainPage = new NavigationPage(new LoginPage()); 
+                //App.Current.MainPage = new NavigationPage(new LoginPage());
             }
             else
             {

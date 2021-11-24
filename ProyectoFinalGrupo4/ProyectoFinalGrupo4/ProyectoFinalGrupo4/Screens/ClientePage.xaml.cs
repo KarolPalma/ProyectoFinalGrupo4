@@ -1,14 +1,11 @@
-﻿using System;
+﻿using ProyectoFinalGrupo4.Models;
+using ProyectoFinalGrupo4.Respositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ProyectoFinalGrupo4.Models;
-using ProyectoFinalGrupo4.Respositories;
-using Xamarin.Essentials;
 
 namespace ProyectoFinalGrupo4.Screens
 {
@@ -79,7 +76,8 @@ namespace ProyectoFinalGrupo4.Screens
                 cliente.clave = txtContrasenia.Text;
                 repository.InsertCliente(cliente, usuarioActual);
                 limpiar();
-            }else if (btnGuardar.Text == "Modificar Cliente" && Validaciones() == true)
+            }
+            else if (btnGuardar.Text == "Modificar Cliente" && Validaciones() == true)
             {
                 //Modificar Cliente
                 Clientes cliente = new Clientes(int.Parse(txtIdCliente.Text), txtIdentificacion.Text, txtNombres.Text, txtApellidos.Text,
@@ -107,7 +105,8 @@ namespace ProyectoFinalGrupo4.Screens
             lstClientes.ItemsSource = listaClientes;
         }
 
-        async private void btnAbrirMapa(object sender, EventArgs e){
+        async private void btnAbrirMapa(object sender, EventArgs e)
+        {
             idCliente = int.Parse(txtIdCliente.Text);
             identificacion = txtIdentificacion.Text;
             nombres = txtNombres.Text;
@@ -217,7 +216,7 @@ namespace ProyectoFinalGrupo4.Screens
             }
         }
         async private void btnDesactivar_Clicked(object sender, EventArgs e)
-        { 
+        {
             bool respuesta;
             if (btnDesactivar.Text == "Desactivar Cliente" && Validaciones() == true)
             {
@@ -245,7 +244,7 @@ namespace ProyectoFinalGrupo4.Screens
                     repository.UpdateCliente(cliente, usuarioActual);
                     limpiar();
                 }
-            } 
+            }
         }
 
         private bool Validaciones()

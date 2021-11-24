@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.proyectofinalgrupo4">
     <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30" />
-<application android:label="Tarea2KarolPalma.Android" android:theme="@style/MainTheme">
+<application android:label="ProyectoFinalGrupo4.Android" android:theme="@style/MainTheme">
 		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAho5JIQUtnhQdro1De13Dt6GW6Oz9W7FE"/>
 		<uses-library android:name="org.apache.http.legacy" android:required="false"></uses-library>
 	</application>
@@ -18,4 +18,15 @@
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.CAMERA"/>
+
+  <queries>
+    <intent>
+      <action android:name="android.intent.action.VIEW" />
+      <data android:scheme="http"/>
+    </intent>
+    <intent>
+      <action android:name="android.intent.action.VIEW" />
+      <data android:scheme="https"/>
+    </intent>
+  </queries>
 </manifest>

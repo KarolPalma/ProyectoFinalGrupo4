@@ -1,28 +1,27 @@
-﻿using System;
+﻿using ProyectoFinalGrupo4.Models;
+using ProyectoFinalGrupo4.Respositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xamarin.Essentials;
-using ProyectoFinalGrupo4.Respositories;
-using ProyectoFinalGrupo4.Models;
 
 namespace ProyectoFinalGrupo4.Screens
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-
     public partial class PerfilPage : ContentPage
     {
         RepositoryClientes repoCliente = new RepositoryClientes();
         RepositoryAdministradores repoAdministrador = new RepositoryAdministradores();
         RepositorySesiones repositorySesiones = new RepositorySesiones();
         string usuario, rol, idSesionUsuario;
-        String idUsuario, identificacion, nombres, apellidos, telefono, direccion, usuarioM, correo;
-        int idSessionUsuario, idUsuarioM, registro = 2;
+        String nombres, apellidos;
+        int idSessionUsuario, registro = 2;
         double latitud, longitud;
+
         public PerfilPage()
         {
             InitializeComponent();
@@ -90,16 +89,10 @@ namespace ProyectoFinalGrupo4.Screens
 
         async private void btnAbrirMapa(object sender, EventArgs e)
         {
-            idUsuarioM = int.Parse(txtIdUsuario.Text);
-            identificacion = txtIdentificacion.Text;
             nombres = txtNombres.Text;
             apellidos = txtApellidos.Text;
             latitud = double.Parse(txtLatitud.Text);
             longitud = double.Parse(txtLongitud.Text);
-            telefono = txtTelefono.Text;
-            direccion = txtDireccion.Text;
-            usuarioM = txtUsuario.Text;
-            correo = txtCorreo.Text;
             try
             {
                 var location = await Geolocation.GetLastKnownLocationAsync();
@@ -144,7 +137,8 @@ namespace ProyectoFinalGrupo4.Screens
                     repoAdministrador.UpdateAdministrador(administrador, idSessionUsuario);
 
                 }
-            }else if (int.Parse(rol) == 2) //Cliente
+            }
+            else if (int.Parse(rol) == 2) //Cliente
             {
                 if (Validaciones())
                 {
@@ -182,7 +176,7 @@ namespace ProyectoFinalGrupo4.Screens
                     respuesta = false;
                 }
             }
-            else if(int.Parse(rol) == 2) //Cliente
+            else if (int.Parse(rol) == 2) //Cliente
             {
                 if (string.IsNullOrEmpty(txtIdentificacion.Text) || string.IsNullOrEmpty(txtNombres.Text) || string.IsNullOrEmpty(txtApellidos.Text) || string.IsNullOrEmpty(txtTelefono.Text) || string.IsNullOrEmpty(txtLatitud.Text) ||
                 string.IsNullOrEmpty(txtLongitud.Text) || string.IsNullOrEmpty(txtCorreo.Text) || string.IsNullOrEmpty(txtUsuario.Text) || string.IsNullOrEmpty(txtContrasenia.Text) || string.IsNullOrEmpty(txtConfirmacion.Text))

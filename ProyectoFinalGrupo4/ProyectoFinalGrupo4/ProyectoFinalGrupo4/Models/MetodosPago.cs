@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ProyectoFinalGrupo4.Models
+﻿namespace ProyectoFinalGrupo4.Models
 {
     class MetodosPago
     {

@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Net.Http;
-
-using Xamarin.Forms;
-using ProyectoFinalGrupo4.Models;
+﻿using Newtonsoft.Json;
 using ProyectoFinalGrupo4.Dependencies;
+using ProyectoFinalGrupo4.Models;
+using System.Collections.Generic;
 using System.Net;
+using System.Net.Http;
+using System.Text;
 using Xamarin.Essentials;
-using Newtonsoft.Json;
+using Xamarin.Forms;
 
 namespace ProyectoFinalGrupo4.Respositories
 {
@@ -22,7 +19,7 @@ namespace ProyectoFinalGrupo4.Respositories
         {
             //SOLO PREGUNTA SI EXISTE LA IDENTIFICACION EN LA BD
             string URL = EndPointsAPI.verificarIdeCliente;
-            WebClient webClient = new WebClient(); 
+            WebClient webClient = new WebClient();
 
             webClient.QueryString.Add("identificacion", cliente.identificacion);
             webClient.QueryString.Add("nombres", cliente.nombres);
@@ -75,7 +72,7 @@ namespace ProyectoFinalGrupo4.Respositories
                 }
             }
         }
-        
+
         public async void UpdateCliente(Clientes cliente, int idUsuarioActual)
         {
             //SOLO PREGUNTA SI EXISTE LA IDENTIFICACION EN LA BD
@@ -94,7 +91,7 @@ namespace ProyectoFinalGrupo4.Respositories
             webClient.QueryString.Add("usuario", cliente.usuario);
             webClient.QueryString.Add("correo", cliente.correo);
             webClient.QueryString.Add("clave", cliente.clave);
-            webClient.QueryString.Add("estado",cliente.estado + "");
+            webClient.QueryString.Add("estado", cliente.estado + "");
             webClient.QueryString.Add("usuarioActual", idUsuarioActual + "");
             webClient.QueryString.Add("tipoDispositivo", DeviceInfo.Manufacturer + " " + DeviceInfo.Model);
             webClient.QueryString.Add("sistemaOperativo", DeviceInfo.Platform + " " + DeviceInfo.VersionString);
@@ -135,7 +132,7 @@ namespace ProyectoFinalGrupo4.Respositories
                 }
             }
         }
-        
+
         public async void DeactivateCliente(Clientes cliente, int idUsuarioActual)
         {
             //SOLO PREGUNTA SI EXISTE LA IDENTIFICACION EN LA BD
@@ -160,7 +157,7 @@ namespace ProyectoFinalGrupo4.Respositories
             }
 
         }
-        
+
         public List<Clientes> ListClientes()
         {
             string URL = EndPointsAPI.listarClientes;
@@ -182,7 +179,7 @@ namespace ProyectoFinalGrupo4.Respositories
 
             return listarClientes;
         }
-        
+
         public Clientes BuscarCliente(int idCliente)
         {
             string URL = EndPointsAPI.buscarClientes;
@@ -205,7 +202,7 @@ namespace ProyectoFinalGrupo4.Respositories
 
             return cliente;
         }
-        
+
         public Clientes TraerClienteActual()
         {
             string URL = EndPointsAPI.buscarClienteActual;

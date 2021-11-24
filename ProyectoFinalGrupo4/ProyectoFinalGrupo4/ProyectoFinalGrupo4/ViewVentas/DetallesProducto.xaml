@@ -33,7 +33,7 @@
             <StackLayout>
                 <Picker x:Name="cmbDescuentos" Title="Seleccionar un Descuento" ItemDisplayBinding="{Binding descripcion}" />
             </StackLayout>
-            
+
             <StackLayout Orientation="Horizontal" Spacing="30">
                 <Grid>
                     <Ellipse Aspect="Uniform" WidthRequest="32" HeightRequest="32" Fill="White"/>
@@ -55,5 +55,5 @@
             </StackLayout>
         </StackLayout>
     </Grid>
-    
+
 </ContentPage>

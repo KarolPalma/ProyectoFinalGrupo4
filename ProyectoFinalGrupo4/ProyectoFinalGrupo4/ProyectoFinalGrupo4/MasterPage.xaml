@@ -6,8 +6,8 @@
     <MasterDetailPage.Master>
         <ContentPage Title="Prueba" BackgroundColor="White">
             <StackLayout>
-                <Image Source="logoCompleto.png" WidthRequest="150" HeightRequest="150" Margin="0,10,0,10"/>
-                <Label FontSize="25"/>
+                <Image Source="logoCompleto.png" WidthRequest="150" HeightRequest="150" Margin="0,10,0,5"/>
+                <Label FontSize="5"/>
                 <StackLayout Orientation="Vertical">
                     <ListView x:Name="lstMenu">
                         <ListView.ItemTemplate>

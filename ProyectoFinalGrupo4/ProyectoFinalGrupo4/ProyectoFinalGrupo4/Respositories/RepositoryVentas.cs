@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
 using ProyectoFinalGrupo4.Dependencies;
 using ProyectoFinalGrupo4.Models;
-using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 
 namespace ProyectoFinalGrupo4.Respositories
@@ -184,6 +184,64 @@ namespace ProyectoFinalGrupo4.Respositories
 
             return metodosPago;
 
+        }
+
+        public async Task<int> Facturar(int idUsuario, double latitud, double longitud, int idMetodoPago)
+        {
+            //SOLO PREGUNTA SI EXISTE LA IDENTIFICACION EN LA BD
+            string URL = EndPointsAPI.facturarVenta;
+            WebClient webClient = new WebClient();
+            int idFactura = 0;
+
+            webClient.QueryString.Add("idUsuario", idUsuario + "");
+            webClient.QueryString.Add("latitud", latitud + "");
+            webClient.QueryString.Add("longitud", longitud + "");
+            webClient.QueryString.Add("idMetodoPago", idMetodoPago + "");
+            webClient.QueryString.Add("tipoDispositivo", DeviceInfo.Manufacturer + " " + DeviceInfo.Model);
+            webClient.QueryString.Add("sistemaOperativo", DeviceInfo.Platform + " " + DeviceInfo.VersionString);
+
+            var data = webClient.UploadValues(URL, "POST", webClient.QueryString);
+            string responseString = UnicodeEncoding.UTF8.GetString(data);
+
+            if (responseString.Equals("0"))
+            {
+                await App.Current.MainPage.DisplayAlert("Error", "No se ha insertado la factura", "OK");
+            }
+            else
+            {
+                //TRATA DE IMPRIMIR LA FACTURA
+                idFactura = int.Parse(responseString);
+            }
+            return idFactura;
+        }
+
+        public async Task<int> FacturarCompra(int idUsuario, double latitud, double longitud, int idMetodoPago)
+        {
+            //SOLO PREGUNTA SI EXISTE LA IDENTIFICACION EN LA BD
+            string URL = EndPointsAPI.facturarCompra;
+            WebClient webClient = new WebClient();
+            int idFactura = 0;
+
+            webClient.QueryString.Add("idUsuario", idUsuario + "");
+            webClient.QueryString.Add("latitud", latitud + "");
+            webClient.QueryString.Add("longitud", longitud + "");
+            webClient.QueryString.Add("idMetodoPago", idMetodoPago + "");
+            webClient.QueryString.Add("tipoDispositivo", DeviceInfo.Manufacturer + " " + DeviceInfo.Model);
+            webClient.QueryString.Add("sistemaOperativo", DeviceInfo.Platform + " " + DeviceInfo.VersionString);
+
+            var data = webClient.UploadValues(URL, "POST", webClient.QueryString);
+            string responseString = UnicodeEncoding.UTF8.GetString(data);
+
+            if (responseString.Equals("0"))
+            {
+                await App.Current.MainPage.DisplayAlert("Error", "No se ha insertado la factura", "OK");
+            }
+            else
+            {
+                //TRATA DE IMPRIMIR LA FACTURA
+                idFactura = int.Parse(responseString);
+            }
+            return idFactura;
         }
     }
 }

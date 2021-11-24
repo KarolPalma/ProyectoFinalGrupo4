@@ -54,7 +54,7 @@
                 <Label x:Name="txtTotal" FontAttributes="Bold" TextColor="#2D2942" FontSize="15" Padding="0,83,0,0" HorizontalTextAlignment="End"/>
             </Grid>
             <Grid Grid.Row="4">
-                <Button Text="Realizar Pedido" CornerRadius="32" HorizontalOptions="Center" BackgroundColor="#2196F3" TextColor="White" FontSize="14" WidthRequest="260"
+                <Button x:Name="btnRealizarPedido" Text="Realizar Pedido" CornerRadius="32" HorizontalOptions="Center" BackgroundColor="#2196F3" TextColor="White" FontSize="14" WidthRequest="260"
                         Clicked="Realizar_Pedido"></Button>
             </Grid>
         </Grid>

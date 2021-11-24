@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ProyectoFinalGrupo4.ViewVentas;
+using System;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
-using ProyectoFinalGrupo4.Screens;
 
 namespace ProyectoFinalGrupo4.Screens
 {
@@ -19,7 +15,7 @@ namespace ProyectoFinalGrupo4.Screens
 
         int idCliente = 1, registro;
         string identificacion, nombres, apellidos, telefono, direccion, usuario, correo, boton;
-        double latitud, longitud;
+        double latitud, longitud, total;
 
         public MapaPage()
         {
@@ -30,6 +26,25 @@ namespace ProyectoFinalGrupo4.Screens
             Position p = new Position(14.0650, -87.1715);
             MapSpan mapSpan = new MapSpan(p, 0.01, 0.01);
             map.MoveToRegion(mapSpan);
+        }
+
+        public MapaPage(double latitud, double longitud, double total)
+        {
+            InitializeComponent();
+            this.latitud = latitud;
+            this.longitud = longitud;
+            this.total = total;
+            Position p = new Position(latitud, longitud);
+            MapSpan mapSpan = new MapSpan(p, 0.01, 0.01);
+            map.MoveToRegion(mapSpan);
+            var pin = new Pin
+            {
+                Type = PinType.Generic,
+                Position = p,
+                Label = "Lugar de entrega actual",
+            };
+            map.Pins.Add(pin);
+            idCliente = -1;
         }
 
         public MapaPage(int id, string identidad, string nombre, string apellido, string tel, string dire, string usu, string email, string button)
@@ -51,7 +66,7 @@ namespace ProyectoFinalGrupo4.Screens
             map.MoveToRegion(mapSpan);
         }
 
-        //Registro
+        //REGISTRO
         public MapaPage(int id, string identidad, string nombre, string apellido, string tel, string dire, string usu, string email, int regist)
         {
             InitializeComponent();
@@ -70,9 +85,8 @@ namespace ProyectoFinalGrupo4.Screens
             map.MoveToRegion(mapSpan);
         }
 
-        //Perfil
-        public MapaPage(string nombre, string apellido, int regist,
-    double lati1, double longi1)
+        //PERFIL
+        public MapaPage(string nombre, string apellido, int regist, double lati1, double longi1)
         {
             InitializeComponent();
 
@@ -181,21 +195,33 @@ namespace ProyectoFinalGrupo4.Screens
             _ = DisplayAlert("Coordenadas", $"Latitud: {e.Position.Latitude}, Longitud: {e.Position.Longitude}", "Aceptar");
             latitud = double.Parse(($"{e.Position.Latitude}"));
             longitud = double.Parse(($"{e.Position.Longitude}"));
-            if (registro == 1)
+            //await Navigation.PushAsync(new ClientePage(idCliente, identificacion, nombres, apellidos, telefono, direccion, latitud, longitud, usuario, correo, boton));
+
+            if (idCliente != -1)
             {
-                Navigation.InsertPageBefore(new RegistroPage(idCliente, identificacion, nombres, apellidos, telefono, direccion, latitud, longitud, usuario, correo), Navigation.NavigationStack[0]);
-                await Navigation.PopToRootAsync();
-            }else if (registro == 2)
-            {
-                Navigation.InsertPageBefore(new PerfilPage(latitud, longitud), Navigation.NavigationStack[0]);
-                await Navigation.PopToRootAsync();
+                if (registro == 1)
+                {
+                    Navigation.InsertPageBefore(new RegistroPage(idCliente, identificacion, nombres, apellidos, telefono, direccion, latitud, longitud, usuario, correo), Navigation.NavigationStack[0]);
+                    await Navigation.PopToRootAsync();
+                }
+                else if (registro == 2)
+                {
+                    Navigation.InsertPageBefore(new PerfilPage(latitud, longitud), Navigation.NavigationStack[0]);
+                    await Navigation.PopToRootAsync();
+                }
+                else
+                {
+                    Navigation.InsertPageBefore(new ClientePage(idCliente, identificacion, nombres, apellidos, telefono, direccion, latitud, longitud, usuario, correo, boton), Navigation.NavigationStack[0]);
+                    await Navigation.PopToRootAsync();
+                }
             }
             else
             {
-                Navigation.InsertPageBefore(new ClientePage(idCliente, identificacion, nombres, apellidos, telefono, direccion, latitud, longitud, usuario, correo, boton), Navigation.NavigationStack[0]);
+                Navigation.InsertPageBefore(new FacturacionPage(latitud, longitud, total), Navigation.NavigationStack[0]);
                 await Navigation.PopToRootAsync();
             }
-            
+
+
         }
     }
 }

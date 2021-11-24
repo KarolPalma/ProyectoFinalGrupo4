@@ -1,16 +1,12 @@
-﻿using ProyectoFinalGrupo4.Dependencies;
+﻿using Newtonsoft.Json;
+using ProyectoFinalGrupo4.Dependencies;
 using ProyectoFinalGrupo4.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Net.Http;
-
-using Xamarin.Forms;
-using Xamarin.Essentials;
-using Newtonsoft.Json;
 using System.Net;
-using System.Threading.Tasks;
+using System.Net.Http;
+using System.Text;
+using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace ProyectoFinalGrupo4
 {
@@ -22,7 +18,7 @@ namespace ProyectoFinalGrupo4
         public async void InsertAdministrador(Administradores administrador, int idUsuarioActual)
         {
             //SOLO PREGUNTA SI EXISTE LA IDENTIFICACION EN LA BD
-            string URL = EndPointsAPI.verificarIde; 
+            string URL = EndPointsAPI.verificarIde;
             WebClient webClient = new WebClient();
 
             webClient.QueryString.Add("identificacion", administrador.identificacion);
@@ -47,7 +43,7 @@ namespace ProyectoFinalGrupo4
             else if (responseString.Equals("No Existe"))
             {
                 //SOLO PREGUNTA SI EXISTE EL USUARIO EN LA BD
-                URL = EndPointsAPI.verificarUsuario; 
+                URL = EndPointsAPI.verificarUsuario;
                 data = webClient.UploadValues(URL, "POST", webClient.QueryString);
                 responseString = UnicodeEncoding.UTF8.GetString(data);
 
@@ -58,7 +54,7 @@ namespace ProyectoFinalGrupo4
                 else if (responseString.Equals("No Existe"))
                 {
                     //INSERTA LA INFORMACION
-                    URL = EndPointsAPI.insertAdmin; 
+                    URL = EndPointsAPI.insertAdmin;
                     data = webClient.UploadValues(URL, "POST", webClient.QueryString);
                     responseString = UnicodeEncoding.UTF8.GetString(data);
 
@@ -73,7 +69,7 @@ namespace ProyectoFinalGrupo4
                 }
             }
         }
-        
+
         public async void UpdateAdministrador(Administradores administrador, int idUsuarioActual)
         {
             //SOLO PREGUNTA SI EXISTE LA IDENTIFICACION EN LA BD
@@ -153,7 +149,7 @@ namespace ProyectoFinalGrupo4
             {
                 await App.Current.MainPage.DisplayAlert("Error", "No se ha desactivado", "OK");
             }
-                
+
         }
 
         public List<Administradores> ListAdministradores()
@@ -174,7 +170,7 @@ namespace ProyectoFinalGrupo4
             {
                 listarAdministradores = JsonConvert.DeserializeObject<List<Administradores>>(responseString);
             }
-            
+
             return listarAdministradores;
         }
 
@@ -199,6 +195,29 @@ namespace ProyectoFinalGrupo4
             }
 
             return administrador;
+        }
+
+        public Administradores TraerAdminActual()
+        {
+            string URL = EndPointsAPI.buscarAdminActual;
+            WebClient webClient = new WebClient();
+
+            webClient.QueryString.Add("idUsuario", Preferences.Get("idUsuario", "0") + "");
+
+            var data = webClient.UploadValues(URL, "POST", webClient.QueryString);
+            string responseString = UnicodeEncoding.UTF8.GetString(data);
+
+            Administradores administradores = new Administradores();
+            if (responseString.Equals(""))
+            {
+                App.Current.MainPage.DisplayAlert("Error", "No se pueden consultar los datos", "OK");
+            }
+            else
+            {
+                administradores = JsonConvert.DeserializeObject<Administradores>(responseString);
+            }
+
+            return administradores;
         }
 
     }
