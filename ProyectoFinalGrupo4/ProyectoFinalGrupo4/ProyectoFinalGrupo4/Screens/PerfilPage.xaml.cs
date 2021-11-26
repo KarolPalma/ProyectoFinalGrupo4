@@ -1,10 +1,8 @@
 ﻿using ProyectoFinalGrupo4.Models;
 using ProyectoFinalGrupo4.Respositories;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -135,6 +133,7 @@ namespace ProyectoFinalGrupo4.Screens
                     administrador.correo = txtCorreo.Text;
                     administrador.clave = txtContrasenia.Text;
                     repoAdministrador.UpdateAdministrador(administrador, idSessionUsuario);
+                    repositorySesiones.UsuarioLogin(administrador.usuario, administrador.clave);
 
                 }
             }
@@ -158,6 +157,8 @@ namespace ProyectoFinalGrupo4.Screens
                     cliente.correo = txtCorreo.Text;
                     cliente.clave = txtContrasenia.Text;
                     repoCliente.UpdateCliente(cliente, idSessionUsuario);
+                    
+                    repositorySesiones.UsuarioLogin(cliente.usuario, cliente.clave);
                 }
             }
 

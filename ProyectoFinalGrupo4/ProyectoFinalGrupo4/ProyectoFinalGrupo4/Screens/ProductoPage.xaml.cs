@@ -22,7 +22,6 @@ namespace ProyectoFinalGrupo4.Screens
         RepositoryImpuestos repoImpuesto = new RepositoryImpuestos();
         List<Impuestos> impuestos = new List<Impuestos>();
         String cmbSelected = "";
-        int usuarioActual = 2;
         bool estado;
         string foto;
 
@@ -61,7 +60,7 @@ namespace ProyectoFinalGrupo4.Screens
                 producto.cantidadMinima = int.Parse(txtCantidadMin.Text);
                 producto.cantidadMaxima = int.Parse(txtCantidadMax.Text);
                 producto.precio = double.Parse(txtPrecio.Text);
-                bool ingresado = await repository.InsertProducto(producto, usuarioActual);
+                bool ingresado = await repository.InsertProducto(producto, int.Parse(Preferences.Get("idUsuario", "")));
                 if (ingresado)
                 {
                     await DisplayAlert("Éxito", "Producto ingresado satisfactoriamente", "OK");
@@ -94,7 +93,7 @@ namespace ProyectoFinalGrupo4.Screens
                 producto.cantidadMinima = int.Parse(txtCantidadMin.Text);
                 producto.cantidadMaxima = int.Parse(txtCantidadMax.Text);
                 producto.precio = double.Parse(txtPrecio.Text);
-                bool ingresado = await repository.UpdateProducto(producto, usuarioActual);
+                bool ingresado = await repository.UpdateProducto(producto, int.Parse(Preferences.Get("idUsuario", "")));
                 if (ingresado)
                 {
                     await DisplayAlert("Éxito", "Producto actualizado satisfactoriamente", "OK");
@@ -127,7 +126,7 @@ namespace ProyectoFinalGrupo4.Screens
                     Productos producto = new Productos(int.Parse(txtIdProducto.Text), txtNombre.Text, txtDescripcion.Text, provinceIdCategoria, provinceCategoria,
                         provinceIdProveedor, provinceProveedor, txtCantidadUnidad.Text, int.Parse(txtUnidadAlmacen.Text), int.Parse(txtCantidadMin.Text),
                         int.Parse(txtCantidadMax.Text), foto, false, double.Parse(txtPrecio.Text), provinceIdImpuesto);
-                    repository.DeactivateProducto(producto, usuarioActual);
+                    repository.DeactivateProducto(producto, int.Parse(Preferences.Get("idUsuario", "")));
                     btnDesactivar.Text = "Activar Producto";
                     btnDesactivar.BackgroundColor = Color.Green;
                     limpiar();
@@ -150,7 +149,7 @@ namespace ProyectoFinalGrupo4.Screens
                     Productos producto = new Productos(int.Parse(txtIdProducto.Text), txtNombre.Text, txtDescripcion.Text, provinceIdCategoria, provinceCategoria,
                         provinceIdProveedor, provinceProveedor, txtCantidadUnidad.Text, int.Parse(txtUnidadAlmacen.Text), int.Parse(txtCantidadMin.Text),
                         int.Parse(txtCantidadMax.Text), foto, true, double.Parse(txtPrecio.Text), provinceIdImpuesto);
-                    repository.UpdateProducto(producto, usuarioActual);
+                    await repository.UpdateProducto(producto, int.Parse(Preferences.Get("idUsuario", "")));
                     limpiar();
                 }
             }

@@ -65,6 +65,15 @@ namespace ProyectoFinalGrupo4
                 MenuLateral descuento = new MenuLateral() { Titulo = "Módulo de Descuentos", Pagina = typeof(DescuentoPage) };
                 MenuLateral.Add(descuento);
 
+                MenuLateral facturaCompras = new MenuLateral() { Titulo = "Módulo Facturas Compras", Pagina = typeof(FacturasComprasPage) };
+                MenuLateral.Add(facturaCompras);
+
+                MenuLateral faccturaVentas = new MenuLateral() { Titulo = "Módulo Facturas Ventas", Pagina = typeof(FacturasVentasPage) };
+                MenuLateral.Add(faccturaVentas);
+
+                MenuLateral facturaUsuario = new MenuLateral() { Titulo = "Mis Facturas", Pagina = typeof(FacturasUsuario) };
+                MenuLateral.Add(facturaUsuario);
+
                 MenuLateral perfil = new MenuLateral() { Titulo = "Mi cuenta", Pagina = typeof(PerfilPage) };
                 MenuLateral.Add(perfil);
 
@@ -80,6 +89,8 @@ namespace ProyectoFinalGrupo4
                 MenuLateral = new List<MenuLateral>();
                 MenuLateral inicio = new MenuLateral() { Titulo = "Inicio", Pagina = typeof(VentasPage) };
                 MenuLateral.Add(inicio);
+                MenuLateral facturaUsuario = new MenuLateral() { Titulo = "Mis Facturas", Pagina = typeof(FacturasUsuario) };
+                MenuLateral.Add(facturaUsuario);
                 MenuLateral perfil = new MenuLateral() { Titulo = "Mi Cuenta", Pagina = typeof(PerfilPage) };
                 MenuLateral.Add(perfil);
                 MenuLateral cerrarSesion = new MenuLateral() { Titulo = "Cerrar Sesión", Pagina = typeof(LoginPage) };

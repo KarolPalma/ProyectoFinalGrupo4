@@ -2105,3 +2105,7 @@ C:\Users\Usuario\Downloads\ProyectoFinalPMII-master\ProyectoFinalGrupo4\Proyecto
 C:\Users\Usuario\source\repos\ProyectoFinalGrupo4\ProyectoFinalGrupo4\ProyectoFinalGrupo4.Android\obj\Debug\110\res\drawable\pantallabienvenida.xml
 C:\Users\Usuario\source\repos\ProyectoFinalGrupo4\ProyectoFinalGrupo4\ProyectoFinalGrupo4.Android\obj\Debug\110\android\src\crc6473709e36e4627a75\SplashActivity.java
 C:\Users\Usuario\source\repos\ProyectoFinalGrupo4\ProyectoFinalGrupo4\ProyectoFinalGrupo4.Android\obj\Debug\110\res\drawable\logopantalla.jpg
+C:\Users\miria\Downloads\ProyectoFinalGrupo4\ProyectoFinalGrupo4\ProyectoFinalGrupo4.Android\obj\Debug\110\res\drawable\pantallabienvenida.xml
+C:\Users\miria\Downloads\ProyectoFinalGrupo4\ProyectoFinalGrupo4\ProyectoFinalGrupo4.Android\obj\Debug\110\res\drawable\logopantalla.jpg
+C:\Users\miria\Downloads\ProyectoFinalGrupo4\ProyectoFinalGrupo4\ProyectoFinalGrupo4.Android\obj\Debug\110\android\src\crc6473709e36e4627a75\SplashActivity.java
+C:\Users\Usuario\source\repos\ProyectoFinalGrupo4\ProyectoFinalGrupo4\ProyectoFinalGrupo4.Android\obj\Debug\110\ProyectoFinalGrupo4.Android.csproj.CopyComplete

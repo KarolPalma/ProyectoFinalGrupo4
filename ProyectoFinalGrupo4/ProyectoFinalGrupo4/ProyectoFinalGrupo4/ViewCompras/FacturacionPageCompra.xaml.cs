@@ -4,8 +4,6 @@ using ProyectoFinalGrupo4.Respositories;
 using ProyectoFinalGrupo4.Screens;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -65,18 +63,18 @@ namespace ProyectoFinalGrupo4.ViewCompras
 
                 if (location != null)
                 {
-                    Navigation.InsertPageBefore(new MapaPage(location.Latitude, location.Longitude, totalGlobal), Navigation.NavigationStack[0]);
+                    Navigation.InsertPageBefore(new MapaPage(location.Latitude, location.Longitude, totalGlobal, "compra"), Navigation.NavigationStack[0]);
                     await Navigation.PopToRootAsync();
                 }
                 else
                 {
-                    Navigation.InsertPageBefore(new MapaPage(double.Parse(txtLatitud.Text), double.Parse(txtLongitud.Text), totalGlobal), Navigation.NavigationStack[0]);
+                    Navigation.InsertPageBefore(new MapaPage(double.Parse(txtLatitud.Text), double.Parse(txtLongitud.Text), totalGlobal, "compra"), Navigation.NavigationStack[0]);
                     await Navigation.PopToRootAsync();
                 }
             }
             catch (Exception ex)
             {
-                Navigation.InsertPageBefore(new MapaPage(double.Parse(txtLatitud.Text), double.Parse(txtLongitud.Text), totalGlobal), Navigation.NavigationStack[0]);
+                Navigation.InsertPageBefore(new MapaPage(double.Parse(txtLatitud.Text), double.Parse(txtLongitud.Text), totalGlobal, "compra"), Navigation.NavigationStack[0]);
                 await Navigation.PopToRootAsync();
             }
         }

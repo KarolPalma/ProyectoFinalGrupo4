@@ -84,7 +84,7 @@ namespace ProyectoFinalGrupo4
 
         private void cmbCategoriasFiltrado_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Categorias categoriaFiltro = (Categorias) cmbCategoriasFiltrado.SelectedItem;
+            Categorias categoriaFiltro = (Categorias)cmbCategoriasFiltrado.SelectedItem;
             List<Productos> productosTodos = repositoryVentas.verProductos();
             List<Productos> productos = new List<Productos>();
 
@@ -100,7 +100,7 @@ namespace ProyectoFinalGrupo4
 
                 listViewProductos.ItemsSource = productos;
             }
-            
+
         }
     }
 }

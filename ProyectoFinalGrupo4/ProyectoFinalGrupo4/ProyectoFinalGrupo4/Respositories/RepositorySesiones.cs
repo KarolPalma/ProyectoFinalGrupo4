@@ -1,11 +1,9 @@
 ﻿using Newtonsoft.Json;
 using ProyectoFinalGrupo4.Dependencies;
 using ProyectoFinalGrupo4.Models;
-using ProyectoFinalGrupo4.Screens;
 using System.Net;
 using System.Text;
 using Xamarin.Essentials;
-using Xamarin.Forms;
 
 namespace ProyectoFinalGrupo4.Respositories
 {

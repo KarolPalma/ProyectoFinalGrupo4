@@ -11,7 +11,7 @@ using System.Text;
 
 namespace ProyectoFinalGrupo4.Droid
 {
-    [Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true, Label = "SplashActivity")]
+    [Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true, Label = "SalesApp")]
     public class SplashActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)

@@ -114,7 +114,7 @@ namespace ProyectoFinalGrupo4.ViewVentas
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error","No se pudo abrir la factura en el navegador","Ok");
+                await DisplayAlert("Error", "No se pudo abrir la factura en el navegador", "Ok");
             }
         }
     }

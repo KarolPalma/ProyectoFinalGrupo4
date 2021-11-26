@@ -38,7 +38,7 @@ $pdf->Cell(60,4,'CAI:JI1-4AE-WSF-424-2R2-WR4',0,1,'');
 $pdf->Cell(60,4,'FECHA LIMITE EMISION:                         30-12-2025',0,1,'');
 $pdf->Cell(60,4,'DESDE: 1                              HASTA 1000020003000',0,1,'');
 $pdf->Cell(60,4,utf8_decode('RTN: CF') ,0,1,'');
-$pdf->Cell(60,4,$idAdmin . "  -            " . $nombreAdmin,0,1,'');
+$pdf->Cell(60,4,$idAdmin . "  -            " . utf8_decode($nombreAdmin),0,1,'');
 $pdf->Cell(60,4,'Correo: ' . '    ' . utf8_decode($correo),0,1,'');
 $pdf->Cell(60,4,utf8_decode('Método de Pago: ' . $metodoPago) ,0,1,'');
 
@@ -67,13 +67,13 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 
 
-$sql = "SELECT CalcularDescuentos(0," . $id . ") AS Descuentos;"; 
+$sql = "SELECT CalcularDescuentos(1," . $id . ") AS Descuentos;"; 
 $result = mysqli_query($conexion, $sql); 
 while ($row = mysqli_fetch_assoc($result)) { 
     $descuentos = $row["Descuentos"];
 }
 
-$sql = "SELECT CalcularImpuestos(0," . $id . ") AS Impuestos;"; 
+$sql = "SELECT CalcularImpuestos(1," . $id . ") AS Impuestos;"; 
 $result = mysqli_query($conexion, $sql); 
 while ($row = mysqli_fetch_assoc($result)) { 
     $impuestos = $row["Impuestos"];

@@ -15,7 +15,7 @@ namespace ProyectoFinalGrupo4.Screens
         Clientes cliente = new Clientes();
         RepositoryClientes repository = new RepositoryClientes();
         List<Clientes> clientes = new List<Clientes>();
-        int usuarioActual = 2, idCliente;
+        int idCliente;
         bool estado;
 
         string identificacion, nombres, apellidos, telefono, direccion, usuario, correo, boton;
@@ -74,7 +74,7 @@ namespace ProyectoFinalGrupo4.Screens
                 cliente.usuario = txtUsuario.Text;
                 cliente.correo = txtCorreo.Text;
                 cliente.clave = txtContrasenia.Text;
-                repository.InsertCliente(cliente, usuarioActual);
+                repository.InsertCliente(cliente, int.Parse(Preferences.Get("idUsuario", "")));
                 limpiar();
             }
             else if (btnGuardar.Text == "Modificar Cliente" && Validaciones() == true)
@@ -82,7 +82,7 @@ namespace ProyectoFinalGrupo4.Screens
                 //Modificar Cliente
                 Clientes cliente = new Clientes(int.Parse(txtIdCliente.Text), txtIdentificacion.Text, txtNombres.Text, txtApellidos.Text,
                     txtTelefono.Text, txtNacimiento.Date, txtDireccion.Text, Double.Parse(txtLatitud.Text),
-                    Double.Parse(txtLongitud.Text), usuarioActual, txtUsuario.Text, txtCorreo.Text, txtContrasenia.Text, "", true);
+                    Double.Parse(txtLongitud.Text), 1, txtUsuario.Text, txtCorreo.Text, txtContrasenia.Text, "", true);
 
                 cliente.idCliente = int.Parse(txtIdCliente.Text);
                 cliente.identificacion = txtIdentificacion.Text;
@@ -96,7 +96,7 @@ namespace ProyectoFinalGrupo4.Screens
                 cliente.usuario = txtUsuario.Text;
                 cliente.correo = txtCorreo.Text;
                 cliente.clave = txtContrasenia.Text;
-                repository.UpdateCliente(cliente, usuarioActual);
+                repository.UpdateCliente(cliente, int.Parse(Preferences.Get("idUsuario", "")));
                 limpiar();
             }
 
@@ -225,9 +225,9 @@ namespace ProyectoFinalGrupo4.Screens
                 {
                     Clientes cliente = new Clientes(int.Parse(txtIdCliente.Text), txtIdentificacion.Text, txtNombres.Text, txtApellidos.Text,
                         txtTelefono.Text, txtNacimiento.Date, txtDireccion.Text, Double.Parse(txtLatitud.Text),
-                        Double.Parse(txtLongitud.Text), usuarioActual, txtUsuario.Text, txtCorreo.Text, txtContrasenia.Text, "", false);
+                        Double.Parse(txtLongitud.Text), 1, txtUsuario.Text, txtCorreo.Text, txtContrasenia.Text, "", false);
 
-                    repository.DeactivateCliente(cliente, usuarioActual);
+                    repository.DeactivateCliente(cliente, int.Parse(Preferences.Get("idUsuario", "")));
                     btnDesactivar.Text = "Activar Cliente";
                     btnDesactivar.BackgroundColor = Color.Green;
                     limpiar();
@@ -240,8 +240,8 @@ namespace ProyectoFinalGrupo4.Screens
                 {
                     Clientes cliente = new Clientes(int.Parse(txtIdCliente.Text), txtIdentificacion.Text, txtNombres.Text, txtApellidos.Text,
                         txtTelefono.Text, txtNacimiento.Date, txtDireccion.Text, Double.Parse(txtLatitud.Text),
-                        Double.Parse(txtLongitud.Text), usuarioActual, txtUsuario.Text, txtCorreo.Text, txtContrasenia.Text, "", true);
-                    repository.UpdateCliente(cliente, usuarioActual);
+                        Double.Parse(txtLongitud.Text), 1, txtUsuario.Text, txtCorreo.Text, txtContrasenia.Text, "", true);
+                    repository.UpdateCliente(cliente, int.Parse(Preferences.Get("idUsuario", "")));
                     limpiar();
                 }
             }

@@ -1,7 +1,11 @@
 ﻿using ProyectoFinalGrupo4.Models;
+using ProyectoFinalGrupo4.Respositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,8 +15,8 @@ namespace ProyectoFinalGrupo4.Screens
     public partial class AdministradorPage : ContentPage
     {
         RepositoryAdministradores repository = new RepositoryAdministradores();
+        RepositorySesiones repositorySesiones = new RepositorySesiones();
         List<Administradores> administradores = new List<Administradores>();
-        int usuarioActual = 2;
         bool estado;
 
         public AdministradorPage()
@@ -39,15 +43,14 @@ namespace ProyectoFinalGrupo4.Screens
                 administrador.usuario = txtUsuario.Text;
                 administrador.correo = txtCorreo.Text;
                 administrador.clave = txtContrasenia.Text;
-                administrador.idUsuario = usuarioActual;
-                repository.InsertAdministrador(administrador, usuarioActual);
+                repository.InsertAdministrador(administrador, int.Parse(Preferences.Get("idUsuario", "")));
                 limpiar();
             }
             else if (btnGuardar.Text == "Modificar Administrador" && Validaciones() == true)
             {
                 //Modifica Administrador
                 Administradores administrador = new Administradores(int.Parse(txtIdAdmin.Text), txtIdentificacion.Text, txtNombres.Text, txtApellidos.Text,
-                    txtTelefono.Text, txtNacimiento.Date, usuarioActual, txtUsuario.Text, txtCorreo.Text, txtContrasenia.Text, "", true);
+                    txtTelefono.Text, txtNacimiento.Date, 1, txtUsuario.Text, txtCorreo.Text, txtContrasenia.Text, "", true);
 
                 administrador.idAdmin = int.Parse(txtIdAdmin.Text);
                 administrador.identificacion = txtIdentificacion.Text;
@@ -55,12 +58,15 @@ namespace ProyectoFinalGrupo4.Screens
                 administrador.apellidos = txtApellidos.Text;
                 administrador.telefono = txtTelefono.Text;
                 administrador.fechaNacimiento = txtNacimiento.Date;
-                administrador.idUsuario = usuarioActual;
                 administrador.usuario = txtUsuario.Text;
                 administrador.correo = txtCorreo.Text;
                 administrador.clave = txtContrasenia.Text;
 
-                repository.UpdateAdministrador(administrador, usuarioActual);
+                repository.UpdateAdministrador(administrador, int.Parse(Preferences.Get("idUsuario", "")));
+                if (int.Parse(Preferences.Get("idSesionUsuario", "")) == administrador.idAdmin)
+                {
+                    repositorySesiones.UsuarioLogin(administrador.usuario, administrador.clave);
+                }
                 limpiar();
             }
             List<Administradores> listaAdminitradores;
@@ -121,10 +127,17 @@ namespace ProyectoFinalGrupo4.Screens
                 if (respuesta == true)
                 {
                     Administradores administrador = new Administradores(int.Parse(txtIdAdmin.Text), txtIdentificacion.Text, txtNombres.Text, txtApellidos.Text,
-                    txtTelefono.Text, txtNacimiento.Date, usuarioActual, txtUsuario.Text, txtCorreo.Text, txtContrasenia.Text, "", false);
-                    repository.DeactivateAdministrador(administrador, usuarioActual);
+                    txtTelefono.Text, txtNacimiento.Date, 1, txtUsuario.Text, txtCorreo.Text, txtContrasenia.Text, "", false);
+                    repository.DeactivateAdministrador(administrador, int.Parse(Preferences.Get("idUsuario", "")));
                     btnDesactivar.Text = "Activar Administrador";
                     btnDesactivar.BackgroundColor = Color.Green;
+                    if (int.Parse(Preferences.Get("idSesionUsuario", "")) == administrador.idAdmin)
+                    {
+                        if(!repositorySesiones.UsuarioLogin(administrador.usuario, ""))
+                        {
+                            await Navigation.PushAsync(new LoginPage());
+                        }
+                    }
                     limpiar();
                 }
             }
@@ -134,8 +147,8 @@ namespace ProyectoFinalGrupo4.Screens
                 if (respuesta == true)
                 {
                     Administradores administrador = new Administradores(int.Parse(txtIdAdmin.Text), txtIdentificacion.Text, txtNombres.Text, txtApellidos.Text,
-                    txtTelefono.Text, txtNacimiento.Date, usuarioActual, txtUsuario.Text, txtCorreo.Text, txtContrasenia.Text, "", true);
-                    repository.UpdateAdministrador(administrador, usuarioActual);
+                    txtTelefono.Text, txtNacimiento.Date, 1, txtUsuario.Text, txtCorreo.Text, txtContrasenia.Text, "", true);
+                    repository.UpdateAdministrador(administrador, int.Parse(Preferences.Get("idUsuario", "")));
                     limpiar();
                 }
             }
@@ -180,6 +193,5 @@ namespace ProyectoFinalGrupo4.Screens
 
             return respuesta;
         }
-
     }
 }

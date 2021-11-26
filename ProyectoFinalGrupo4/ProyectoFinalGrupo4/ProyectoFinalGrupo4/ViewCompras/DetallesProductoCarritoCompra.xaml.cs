@@ -2,9 +2,6 @@
 using ProyectoFinalGrupo4.Respositories;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -55,7 +52,7 @@ namespace ProyectoFinalGrupo4.ViewCompras
         {
             int cantidad = int.Parse(txtCantidadesCarrito.Text) + 10;
             txtCantidadesCarrito.Text = cantidad + "";
-            
+
             if (int.Parse(txtCantidadesCarrito.Text) >= 10)
             {
                 txtCantidadesCarrito.WidthRequest = 60;

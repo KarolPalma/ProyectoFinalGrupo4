@@ -1,4 +1,5 @@
-﻿using ProyectoFinalGrupo4.ViewVentas;
+﻿using ProyectoFinalGrupo4.ViewCompras;
+using ProyectoFinalGrupo4.ViewVentas;
 using System;
 
 using Xamarin.Forms;
@@ -14,6 +15,7 @@ namespace ProyectoFinalGrupo4.Screens
         private double longitud1;
 
         int idCliente = 1, registro;
+        int idCompra = 0;
         string identificacion, nombres, apellidos, telefono, direccion, usuario, correo, boton;
         double latitud, longitud, total;
 
@@ -45,6 +47,26 @@ namespace ProyectoFinalGrupo4.Screens
             };
             map.Pins.Add(pin);
             idCliente = -1;
+        }
+
+        public MapaPage(double latitud, double longitud, double total, string compra)
+        {
+            InitializeComponent();
+            this.latitud = latitud;
+            this.longitud = longitud;
+            this.total = total;
+            Position p = new Position(latitud, longitud);
+            MapSpan mapSpan = new MapSpan(p, 0.01, 0.01);
+            map.MoveToRegion(mapSpan);
+            var pin = new Pin
+            {
+                Type = PinType.Generic,
+                Position = p,
+                Label = "Lugar de entrega actual",
+            };
+            map.Pins.Add(pin);
+            idCliente = -1;
+            idCompra = 1;
         }
 
         public MapaPage(int id, string identidad, string nombre, string apellido, string tel, string dire, string usu, string email, string button)
@@ -217,8 +239,17 @@ namespace ProyectoFinalGrupo4.Screens
             }
             else
             {
-                Navigation.InsertPageBefore(new FacturacionPage(latitud, longitud, total), Navigation.NavigationStack[0]);
-                await Navigation.PopToRootAsync();
+                if (idCompra != 1)
+                {
+                    Navigation.InsertPageBefore(new FacturacionPage(latitud, longitud, total), Navigation.NavigationStack[0]);
+                    await Navigation.PopToRootAsync();
+                }
+                else
+                {
+                    Navigation.InsertPageBefore(new FacturacionPageCompra(latitud, longitud, total), Navigation.NavigationStack[0]);
+                    await Navigation.PopToRootAsync();
+                }
+                
             }
 
 

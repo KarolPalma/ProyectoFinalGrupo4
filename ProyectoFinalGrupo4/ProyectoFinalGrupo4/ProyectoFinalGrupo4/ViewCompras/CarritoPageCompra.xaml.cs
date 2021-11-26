@@ -2,9 +2,6 @@
 using ProyectoFinalGrupo4.Respositories;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -43,7 +40,14 @@ namespace ProyectoFinalGrupo4.ViewCompras
                 producto.unidadesCarrito = carrito.unidadesLlevadas;
                 producto.idDescuento = carrito.idDescuento;
 
-                producto.SetPrecioConDescuento(descuento.porcentajeDescuento);
+                if (!(descuento is null))
+                {
+                    producto.SetPrecioConDescuento(descuento.porcentajeDescuento);
+                }
+                else
+                {
+                    producto.SetPrecioConDescuento(0);
+                }
 
                 if (producto.precioConImpuesto == producto.precioConDescuento)
                 {
@@ -98,7 +102,14 @@ namespace ProyectoFinalGrupo4.ViewCompras
                 producto.unidadesCarrito = carrito.unidadesLlevadas;
                 producto.idDescuento = carrito.idDescuento;
 
-                producto.SetPrecioConDescuento(descuento.porcentajeDescuento);
+                if (!(descuento is null))
+                {
+                    producto.SetPrecioConDescuento(descuento.porcentajeDescuento);
+                }
+                else
+                {
+                    producto.SetPrecioConDescuento(0);
+                }
 
                 if (producto.precioConImpuesto == producto.precioConDescuento)
                 {

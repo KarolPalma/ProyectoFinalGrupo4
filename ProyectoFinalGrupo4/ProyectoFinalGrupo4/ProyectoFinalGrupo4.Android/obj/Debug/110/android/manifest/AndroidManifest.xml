@@ -32,11 +32,11 @@
     </intent>
   </queries>
   <uses-feature android:glEsVersion="0x00020000" android:required="true" />
-  <application android:name="android.app.Application" android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:debuggable="true" android:extractNativeLibs="true" android:icon="@mipmap/icon" android:label="ProyectoFinalGrupo4.Android" android:theme="@style/MainTheme" android:usesCleartextTraffic="true">
+  <application android:name="android.app.Application" android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:debuggable="true" android:extractNativeLibs="true" android:icon="@drawable/logoicono" android:label="ProyectoFinalGrupo4.Android" android:theme="@style/MainTheme" android:usesCleartextTraffic="true">
     <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAho5JIQUtnhQdro1De13Dt6GW6Oz9W7FE" />
     <uses-library android:name="org.apache.http.legacy" android:required="false" />
-    <activity android:name="crc6473709e36e4627a75.MainActivity" android:configChanges="orientation|smallestScreenSize|screenLayout|screenSize|uiMode" android:icon="@mipmap/icon" android:label="ProyectoFinalGrupo4" android:theme="@style/MainTheme" />
-    <activity android:name="crc6473709e36e4627a75.SplashActivity" android:label="SplashActivity" android:noHistory="true" android:theme="@style/MyTheme.Splash">
+    <activity android:name="crc6473709e36e4627a75.MainActivity" android:configChanges="orientation|smallestScreenSize|screenLayout|screenSize|uiMode" android:icon="@drawable/logoicono" android:label="SalesApp" android:theme="@style/MainTheme" />
+    <activity android:name="crc6473709e36e4627a75.SplashActivity" android:label="SalesApp" android:noHistory="true" android:theme="@style/MyTheme.Splash">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />

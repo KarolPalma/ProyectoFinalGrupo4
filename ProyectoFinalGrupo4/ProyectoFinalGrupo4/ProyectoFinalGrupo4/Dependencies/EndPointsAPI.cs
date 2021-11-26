@@ -84,16 +84,21 @@ namespace ProyectoFinalGrupo4.Dependencies
         public static String traerCarrito = URL + "ventas/traerCarrito.php";
         public static String actualizarCarrito = URL + "ventas/actualizarCarrito.php";
         public static String eliminarDelCarrito = URL + "ventas/eliminarDelCarrito.php";
-
         public static String traerMetodosPago = URL + "ventas/traerMetodosPago.php";
 
         //EndPoints de Facturas Ventas
         public static String facturarVenta = URL + "facturasVentas/insertarFacturaVentas.php";
+        public static String listarFacturasVentas = URL + "facturasVentas/listarFacturasVentas.php";
+        public static String listarFacturasVentasUsuario = URL + "facturasVentas/listarFacturasVentasUsuario.php";
         public static String recuperarFacturaGet = URL + "reporteria/facturaPDF.php";
+        public static String recuperarReporteVentasGet = URL + "reporteria/reporteVentasPDF.php";
 
         //EndPoints de Facturas Compras
         public static String facturarCompra = URL + "facturasCompras/insertarFacturaCompras.php";
+        public static String listarFacturasCompras = URL + "facturasCompras/listarFacturasCompras.php";
+        public static String listarFacturasComprasUsuario = URL + "facturasCompras/listarFacturasComprasUsuario.php";
         public static String recuperarFacturaCompraGet = URL + "reporteria/facturaCompraPDF.php";
+        public static String recuperarReporteComprasGet = URL + "reporteria/reporteComprasPDF.php";
 
     }
 }

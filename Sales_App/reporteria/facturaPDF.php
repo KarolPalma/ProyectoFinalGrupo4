@@ -38,7 +38,7 @@ $pdf->Cell(60,4,'CAI:JI1-4AE-WSF-424-2R2-WR4',0,1,'');
 $pdf->Cell(60,4,'FECHA LIMITE EMISION:                         30-04-2024',0,1,'');
 $pdf->Cell(60,4,'DESDE: 1                              HASTA 1000020003000',0,1,'');
 $pdf->Cell(60,4,utf8_decode('RTN: CF') ,0,1,'');
-$pdf->Cell(60,4,$idCliente . "  -            " . $nombreCliente,0,1,'');
+$pdf->Cell(60,4,$idCliente . "  -            " . utf8_decode($nombreCliente),0,1,'');
 $pdf->Cell(60,4,'Correo: ' . '    ' . utf8_decode($correo),0,1,'');
 $pdf->Cell(60,4,utf8_decode('Método de Pago: ' . $metodoPago) ,0,1,'');
 

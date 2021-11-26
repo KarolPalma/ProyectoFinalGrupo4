@@ -40,7 +40,14 @@ namespace ProyectoFinalGrupo4.ViewVentas
                 producto.unidadesCarrito = carrito.unidadesLlevadas;
                 producto.idDescuento = carrito.idDescuento;
 
-                producto.SetPrecioConDescuento(descuento.porcentajeDescuento);
+                if (!(descuento is null))
+                {
+                    producto.SetPrecioConDescuento(descuento.porcentajeDescuento);
+                }
+                else
+                {
+                    producto.SetPrecioConDescuento(0);
+                }
 
                 if (producto.precioConImpuesto == producto.precioConDescuento)
                 {
@@ -95,7 +102,14 @@ namespace ProyectoFinalGrupo4.ViewVentas
                 producto.unidadesCarrito = carrito.unidadesLlevadas;
                 producto.idDescuento = carrito.idDescuento;
 
-                producto.SetPrecioConDescuento(descuento.porcentajeDescuento);
+                if (!(descuento is null))
+                {
+                    producto.SetPrecioConDescuento(descuento.porcentajeDescuento);
+                }
+                else
+                {
+                    producto.SetPrecioConDescuento(0);
+                }
 
                 if (producto.precioConImpuesto == producto.precioConDescuento)
                 {
@@ -159,9 +173,9 @@ namespace ProyectoFinalGrupo4.ViewVentas
             }
             else
             {
-                await DisplayAlert("Carrito","Las cantidades especificadas del producto: " + productoExcede + ", exceden las unidades en almacén. Por favor, espere el reabastecimiento del producto o actualice las unidades a llevar.","Ok");
+                await DisplayAlert("Carrito", "Las cantidades especificadas del producto: " + productoExcede + ", exceden las unidades en almacén. Por favor, espere el reabastecimiento del producto o actualice las unidades a llevar.", "Ok");
             }
-            
+
         }
     }
 }

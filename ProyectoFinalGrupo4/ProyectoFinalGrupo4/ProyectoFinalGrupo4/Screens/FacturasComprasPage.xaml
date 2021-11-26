@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoFinalGrupo4.Screens.FacturasComprasPage" Title="Lista de Facturas Compras">
+    <ContentPage.Content>
+        <ScrollView VerticalOptions="Fill">
+            <StackLayout Padding="24">
+                <!--Listado de Facturas de Compras-->
+                <Label Text="Listado Facturas de Compras" HorizontalOptions="Center" FontAttributes="Bold" FontSize="22" Margin="0,20,0,20"></Label>
+                <Button Text="Reporte del día" BackgroundColor="#2196F3" TextColor="White" CornerRadius="20" Margin="60,0,60,20" Clicked="FacturasCompras_Clicked"/>
+                <ListView x:Name="lstFacturasCompras" HasUnevenRows="true">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="15,0,0,0">
+                                    <Label Text="{Binding idFactura, StringFormat='Id Factura: {0}'}" FontAttributes="Bold" TextColor="Black"></Label>
+                                    <Label Text="{Binding nombre, StringFormat='Nombre de Usuario: {0}'}" TextColor="Black"></Label>
+                                    <Label Text="{Binding fecha, StringFormat='{0:d/MM/yyyy}'}" TextColor="Black"></Label>
+                                    <Label Text="{Binding latitud, StringFormat='Latitud: {0}'}" TextColor="Black"></Label>
+                                    <Label Text="{Binding longitud, StringFormat='Longitud: {0}'}" TextColor="Black"></Label>
+                                    <Label Text="{Binding total, StringFormat='Total: {0}'}" TextColor="Black"></Label>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
